@@ -44,28 +44,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autocomplete\PostHandler.cs" />
+    <Compile Include="Columns\Url.cs" />
+    <Compile Include="Columns\HitCount.cs" />
     <Compile Include="Diagnostics\InstrumentationReportCache.cs" />
     <Compile Include="Diagnostics\RouteInstrumentationReport.cs" />
+    <Compile Include="Filter\PostHandler.cs" />
     <Compile Include="Handlers\GetHandler.cs" />
-    <Compile Include="Handlers\InstrumentationRequestModel.cs" />
-    <Compile Include="Handlers\RouteInstrumentationModel.cs" />
+    <Compile Include="Handlers\get_Do_Something_handler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\InstrumentationRequestModel.cs" />
+    <Compile Include="Models\RouteInstrumentationModel.cs" />
     <Compile Include="Models\InstrumentationCacheModel.cs" />
     <Compile Include="Models\InstrumentationCacheModelBuilder.cs" />
+    <Compile Include="Models\InstrumentationRouteRequestModel.cs" />
     <Compile Include="Navigation\InstrumentationExplorerAction.cs" />
-    <Compile Include="PerformanceDiagnosticsRegistry.cs" />
+    <Compile Include="InstrumentationDiagnosticsRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InstrumentationCacheRowProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Scripts\instrumentation.js" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".package-manifest" />
     <Content Include="instrumentation.spark.config" />
+    <Content Include="instrumentation.script.config" />
     <None Include="Handlers\RouteInstrumentation.spark" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />
-    <Folder Include="Content\Scripts\" />
     <Folder Include="Content\Styles\" />
   </ItemGroup>
   <ItemGroup>

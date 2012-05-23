@@ -1,4 +1,3 @@
-using FubuCore.Binding;
 using FubuCore.Binding.InMemory;
 using FubuCore.Reflection;
 using FubuMVC.Core.Diagnostics.Assets;
@@ -9,7 +8,6 @@ using FubuMVC.Core.Runtime;
 using FubuMVC.Core.Security;
 using FubuMVC.Core.UI.Diagnostics;
 using FubuMVC.Core.UI.Security;
-using FubuMVC.Core.Registration;
 
 namespace FubuMVC.Core.Diagnostics
 {

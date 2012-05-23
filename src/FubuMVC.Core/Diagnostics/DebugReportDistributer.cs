@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace FubuMVC.Core.Diagnostics
 {
     public class DebugReportDistributer : IDebugReportDistributer
     {
-        private readonly List<Action<IDebugReport, CurrentRequest>> _actions = new List<Action<IDebugReport, CurrentRequest>>();
+        private static readonly ConcurrentBag<Action<IDebugReport, CurrentRequest>> _actions = new ConcurrentBag<Action<IDebugReport, CurrentRequest>>();
 
         public void Register(Action<IDebugReport, CurrentRequest> action)
         {

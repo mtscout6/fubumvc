@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using FubuMVC.Diagnostics.Instrumentation.Diagnostics;
-using FubuMVC.Diagnostics.Instrumentation.Handlers;
 using FubuMVC.Diagnostics.Models;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Models
@@ -22,7 +21,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Models
                 {
                     Url = r.Url,
                     HitCount = r.HitCount
-                })
+                }).ToList()
             };
         }
     }
