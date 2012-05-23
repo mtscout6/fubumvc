@@ -9,6 +9,6 @@
     <alias name="spark" folder="src/FubuMVC.Spark" />
     <alias name="helloworld" folder="d:\home\oss\fubumvc\src\FubuMVC.HelloWorld" />
     <alias name="hellofubuspark" folder="d:\home\oss\fubumvc\src\FubuMVC.HelloFubuSpark" />
-    <alias name="harness" folder="C:\code\fubumvc\src\FubuMVC.IntegrationTesting" />
+    <alias name="harness" folder="C:\dev\FubuMvc\src\FubuMVC.IntegrationTesting" />
   </Aliases>
 </aliases>

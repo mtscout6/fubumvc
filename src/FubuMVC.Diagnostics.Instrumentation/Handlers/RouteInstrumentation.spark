@@ -1,0 +1,11 @@
+﻿<use master="Fluid" />
+<use namespace="FubuMVC.Core.Registration" />
+
+<viewdata model="FubuMVC.Diagnostics.Instrumentation.Handlers.RouteInstrumentationModel" />
+<content:title>Route Instrumentation Explorer</content:title>
+<content:head>
+</content:head>
+<content:mainContent>
+  <h2 id="route-heading">Route Instrumentation Explorer</h2>
+  <p class="hint">(Use ctrl+f to apply filters)</p>
+</content:mainContent>

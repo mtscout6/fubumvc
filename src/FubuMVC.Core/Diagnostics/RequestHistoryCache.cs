@@ -10,14 +10,15 @@ namespace FubuMVC.Core.Diagnostics
         private readonly IEnumerable<IRequestHistoryCacheFilter> _filters;
         private readonly DiagnosticsConfiguration _configuration;
 
-        public RequestHistoryCache(IEnumerable<IRequestHistoryCacheFilter> filters, DiagnosticsConfiguration configuration)
+        public RequestHistoryCache(IEnumerable<IRequestHistoryCacheFilter> filters, DiagnosticsConfiguration configuration, IDebugReportDistributer reportDistributer)
         {
             _filters = filters;
             _configuration = configuration;
+            reportDistributer.Register(AddReport);
         }
 
         // TODO -- let's thin this down from CurrentRequest
-        public void AddReport(IDebugReport report, CurrentRequest request)
+        private void AddReport(IDebugReport report, CurrentRequest request)
         {
             if(_filters.Any(f => f.Exclude(request)))
             {

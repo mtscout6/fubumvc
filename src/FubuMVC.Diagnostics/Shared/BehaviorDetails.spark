@@ -1,4 +1,5 @@
 ﻿<use master="" />
+<use namespace="FubuCore" />
 <use namespace="FubuMVC.Diagnostics.Features.Requests" />
 <viewdata model="FubuMVC.Diagnostics.Features.Requests.BehaviorDetailsModel" />
 <div class="behavior" id="${Model.Id}" style="display:none">

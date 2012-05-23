@@ -98,7 +98,6 @@
     <None Include="Features\Html\Preview\Preview.spark" />
     <None Include="Features\Dashboard\Dashboard.spark" />
     <None Include="Features\Packaging\Packaging.spark" />
-    <None Include="Features\Performance\RoutePerformance.spark" />
     <None Include="Features\Requests\Requests.spark">
       <SubType>Designer</SubType>
     </None>
@@ -185,7 +184,9 @@
     <None Include="Shared\NavigationMenu.spark">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Shared\BehaviorDetails.spark" />
+    <None Include="Shared\BehaviorDetails.spark">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Shared\_global.spark" />
     <Content Include="web.config" />
     <Content Include="web.Debug.config">
@@ -284,9 +285,6 @@
     <Compile Include="Features\Html\Preview\PreviewModelActivator.cs" />
     <Compile Include="Features\Html\Preview\PreviewModelTypeResolver.cs" />
     <Compile Include="Features\Html\Preview\PropertySourceGenerator.cs" />
-    <Compile Include="Features\Performance\GetHandler.cs" />
-    <Compile Include="Features\Performance\PerformanceRequestModel.cs" />
-    <Compile Include="Features\Performance\RoutePerformanceModel.cs" />
     <Compile Include="Features\Requests\Autocomplete\PostHandler.cs" />
     <Compile Include="Features\Requests\Filter\PostHandler.cs" />
     <Compile Include="Features\Requests\View\get_Id_handler.cs" />
@@ -343,7 +341,6 @@
     <Compile Include="Navigation\NavigationMenuBuilder.cs" />
     <Compile Include="Navigation\NavigationMenuItem.cs" />
     <Compile Include="Navigation\PackageDiagnosticsAction.cs" />
-    <Compile Include="Navigation\PerformanceExplorerAction.cs" />
     <Compile Include="Navigation\RequestExplorerAction.cs" />
     <Compile Include="Navigation\RouteExplorerAction.cs" />
     <Compile Include="Notifications\FilterLink.cs" />

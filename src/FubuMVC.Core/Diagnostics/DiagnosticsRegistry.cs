@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FubuCore.Binding;
 using FubuCore.Binding.InMemory;
 using FubuCore.Reflection;
@@ -10,6 +9,7 @@ using FubuMVC.Core.Runtime;
 using FubuMVC.Core.Security;
 using FubuMVC.Core.UI.Diagnostics;
 using FubuMVC.Core.UI.Security;
+using FubuMVC.Core.Registration;
 
 namespace FubuMVC.Core.Diagnostics
 {
@@ -28,8 +28,7 @@ namespace FubuMVC.Core.Diagnostics
 
             Routes
                 .UrlPolicy<DiagnosticUrlPolicy>();
-
-
+            
             Services(x =>
             {
                 // TODO -- need to register IBindingHistory
@@ -43,8 +42,9 @@ namespace FubuMVC.Core.Diagnostics
                 x.ReplaceService<IAuthorizationPolicyExecutor, RecordingAuthorizationPolicyExecutor>();
                 x.ReplaceService<IOutputWriter, RecordingOutputWriter>();
                 x.ReplaceService<IBindingHistory, BindingHistory>();
+                x.SetServiceIfNone<IDebugReportDistributer, DebugReportDistributer>();
                 x.SetServiceIfNone<IRequestHistoryCache, RequestHistoryCache>();
-
+                
                 // TODO -- need to test this
                 x.ReplaceService<IFieldAccessRightsExecutor, RecordingFieldAccessRightsExecutor>();
             });
