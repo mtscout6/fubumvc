@@ -70,6 +70,7 @@
     <Content Include="Content\Images\fubumvc.png" />
     <Content Include="Content\Images\pre_code_bg_blk.gif" />
     <Content Include="Content\Scripts\chains\view.js" />
+    <Content Include="Content\Scripts\gridwrapper.js" />
     <Content Include="Content\Scripts\html\selector.js" />
     <Content Include="Content\Scripts\bootstrap-alerts.js" />
     <Content Include="Content\Scripts\bootstrap-tabs.js" />
