@@ -13,7 +13,7 @@
         public bool IsHidden { get; set; }
         public bool HideFilter { get; set; }
 
-		public override bool Equals(object obj)
+        public override bool Equals(object obj)
 		{
 			if (ReferenceEquals(null, obj)) return false;
 			if (ReferenceEquals(this, obj)) return true;

@@ -3,9 +3,9 @@ using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 {
-    public class HitCount : GridColumnBase<RouteInstrumentationModel>
+    public class HitCountColumn : GridColumnBase<RouteInstrumentationModel>
     {
-        public HitCount() 
+        public HitCountColumn() 
             : base("Hit Count")
         {
         }

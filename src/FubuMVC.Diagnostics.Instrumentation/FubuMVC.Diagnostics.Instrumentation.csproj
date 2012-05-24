@@ -46,11 +46,13 @@
   <ItemGroup>
     <Compile Include="Handlers\Routes\Autocomplete\PostHandler.cs" />
     <Compile Include="Handlers\Routes\Columns\RequestUrlColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\Url.cs" />
-    <Compile Include="Handlers\Routes\Columns\HitCount.cs" />
+    <Compile Include="Handlers\Routes\Columns\UrlColumn.cs" />
+    <Compile Include="Handlers\Routes\Columns\HitCountColumn.cs" />
     <Compile Include="Diagnostics\InstrumentationReportCache.cs" />
     <Compile Include="Diagnostics\RouteInstrumentationReport.cs" />
+    <Compile Include="Handlers\Routes\Filter\HitCountFilter.cs" />
     <Compile Include="Handlers\Routes\Filter\PostHandler.cs" />
+    <Compile Include="Handlers\Routes\Filter\UrlFilter.cs" />
     <Compile Include="Handlers\Routes\GetHandler.cs" />
     <Compile Include="Handlers\Routes\get_Coumn_Value_handler.cs">
       <SubType>Code</SubType>

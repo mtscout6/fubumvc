@@ -3,9 +3,9 @@ using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 {
-    public class Url : GridColumnBase<RouteInstrumentationModel>
+    public class UrlColumn : GridColumnBase<RouteInstrumentationModel>
     {
-        public Url() 
+        public UrlColumn() 
             : base("Url")
         {
         }

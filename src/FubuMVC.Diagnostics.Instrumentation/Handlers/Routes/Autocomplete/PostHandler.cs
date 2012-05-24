@@ -10,10 +10,10 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Autocomplete
 {
     public class PostHandler
     {
-        private readonly IGridService<InstrumentationCacheModel, InstrumentationRequestModel> _gridService;
+        private readonly IGridService<InstrumentationCacheModel, RouteInstrumentationModel> _gridService;
         private readonly IModelBuilder<InstrumentationCacheModel> _modelBuilder;
 
-        public PostHandler(IGridService<InstrumentationCacheModel, InstrumentationRequestModel> gridService, IModelBuilder<InstrumentationCacheModel> modelBuilder)
+        public PostHandler(IGridService<InstrumentationCacheModel, RouteInstrumentationModel> gridService, IModelBuilder<InstrumentationCacheModel> modelBuilder)
         {
             _modelBuilder = modelBuilder;
             _gridService = gridService;
