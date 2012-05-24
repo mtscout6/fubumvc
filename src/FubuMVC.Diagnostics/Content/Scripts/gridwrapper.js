@@ -111,9 +111,6 @@
             autowidth: true,
             height: '100%',
             mtype: 'POST',
-            sortorder: 'asc',
-            sortname: 'Route',
-            caption: 'Routes',
             pager: '#pager',
             onCellSelect: function(rowId) {
               window.location = rowId;
@@ -243,8 +240,8 @@
     exports.initGrid = function (gridElementSelector, gridOptions) {
       gridSelector = gridElementSelector;
       ko.applyBindings(viewModel);
-      setupFilters(gridOptions);
-      setupGrid();
+      setupFilters();
+      setupGrid(gridOptions);
       setupAutocomplete();
     };
 

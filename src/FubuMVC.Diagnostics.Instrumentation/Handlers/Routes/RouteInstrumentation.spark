@@ -57,10 +57,9 @@
 
       <div class="clear"></div>
   </div>
+  <script id="filterTemplate" type="text/html">
+    <a class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: function() { $data.remove() }">
+      <span class="ui-button-text">{{= type }}: "{{= value }}"</span>
+    </a>
+  </script>
 </content:mainContent>
-
-<script id="filterTemplate" type="text/html">
-  <a class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: function() { $data.remove() }">
-    <span class="ui-button-text">{{= type }}: "{{= value }}"</span>
-  </a>
-</script>
