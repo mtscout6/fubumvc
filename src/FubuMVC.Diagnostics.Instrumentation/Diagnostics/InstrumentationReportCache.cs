@@ -26,6 +26,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
             _instrumentationReports.AddOrUpdate(debugReport.BehaviorId,
                 guid =>
                 {
+                    debugReport.RecordFormData();
                     var report = new RouteInstrumentationReport(debugReport.Url);
                     report.IncrementHitCount();
                     return report;

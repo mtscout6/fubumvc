@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FubuMVC.Diagnostics.Core.Grids;
-using FubuMVC.Diagnostics.Features.Requests;
-using FubuMVC.Diagnostics.Instrumentation.Models;
+using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 using FubuMVC.Diagnostics.Models;
 
-namespace FubuMVC.Diagnostics.Instrumentation.Handlers
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes
 {
     public class GetHandler
     {

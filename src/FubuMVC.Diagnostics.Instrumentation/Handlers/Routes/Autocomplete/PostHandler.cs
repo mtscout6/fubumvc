@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using FubuMVC.Diagnostics.Core.Grids;
-using FubuMVC.Diagnostics.Instrumentation.Models;
+using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 using FubuMVC.Diagnostics.Models;
 using FubuMVC.Diagnostics.Models.Grids;
 
-namespace FubuMVC.Diagnostics.Instrumentation.Autocomplete
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Autocomplete
 {
     public class PostHandler
     {

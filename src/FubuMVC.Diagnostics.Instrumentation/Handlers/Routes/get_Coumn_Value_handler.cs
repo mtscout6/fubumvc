@@ -1,14 +1,14 @@
-using FubuMVC.Diagnostics.Instrumentation.Models;
+using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 using FubuMVC.Diagnostics.Models;
 using FubuMVC.Diagnostics.Models.Grids;
 
-namespace FubuMVC.Diagnostics.Features.Routes
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes
 {
-    public class get_Do_Something_handler
+    public class get_Coumn_Value_handler
     {
         private readonly IModelBuilder<InstrumentationCacheModel> _modelBuilder;
 
-        public get_Do_Something_handler(IModelBuilder<InstrumentationCacheModel> modelBuilder)
+        public get_Coumn_Value_handler(IModelBuilder<InstrumentationCacheModel> modelBuilder)
         {
             _modelBuilder = modelBuilder;
         }

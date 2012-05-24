@@ -1,7 +1,7 @@
 ﻿using FubuMVC.Diagnostics.Core.Grids.Columns;
-using FubuMVC.Diagnostics.Instrumentation.Models;
+using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 
-namespace FubuMVC.Diagnostics.Instrumentation.Columns
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 {
     public class Url : GridColumnBase<RouteInstrumentationModel>
     {
@@ -15,9 +15,9 @@ namespace FubuMVC.Diagnostics.Instrumentation.Columns
             return target.Url;
         }
 
-        public override bool IsIdentifier()
+        public override int Rank()
         {
-            return true;
+            return 5;
         }
     }
 }

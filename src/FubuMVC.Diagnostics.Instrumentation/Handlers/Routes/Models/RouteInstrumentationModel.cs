@@ -1,4 +1,4 @@
-namespace FubuMVC.Diagnostics.Instrumentation.Models
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models
 {
     public class RouteInstrumentationModel
     {

@@ -2,7 +2,7 @@
 using FubuMVC.Diagnostics.Instrumentation.Diagnostics;
 using FubuMVC.Diagnostics.Models;
 
-namespace FubuMVC.Diagnostics.Instrumentation.Models
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models
 {
     public class InstrumentationCacheModelBuilder : IModelBuilder<InstrumentationCacheModel>
     {

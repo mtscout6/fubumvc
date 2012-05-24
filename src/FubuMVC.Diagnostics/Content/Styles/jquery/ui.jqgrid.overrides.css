@@ -10,7 +10,7 @@
 .ui-jqgrid .ui-jqgrid-hdiv {background:none}
 .ui-jqgrid .ui-jqgrid-hbox {}
 .ui-jqgrid .ui-jqgrid-htable {}
-.ui-jqgrid .ui-jqgrid-htable th { padding: 9px 10px 10px 10px; height:auto;} .ui-jqgrid .ui-jqgrid-htable th.ui-state-default { background-image:none; background-color:#fff;}
+.ui-jqgrid .ui-jqgrid-htable th { padding: 9px 0px 10px 5px; height:auto; text-indent: 10px;} .ui-jqgrid .ui-jqgrid-htable th.ui-state-default { background-image:none; background-color:#fff;}
 .ui-jqgrid .ui-jqgrid-htable th div {}
 .ui-th-column, .ui-jqgrid .ui-jqgrid-htable th.ui-th-column {text-align:left; font-weight:bold;}
 .ui-th-ltr, .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr {border-left:1px solid #ccc; border-right:0px none;border-bottom:1px solid #CCC;} .ui-th-ltr, .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr:first-child {border-left:0px none;}
@@ -29,7 +29,7 @@ tr.ui-search-toolbar select {}
 /* body */ 
 .ui-jqgrid .ui-jqgrid-bdiv {}
 .ui-jqgrid .ui-jqgrid-btable {}
-.ui-jqgrid tr.jqgrow td { padding: 9px 10px 10px 10px;}
+.ui-jqgrid tr.jqgrow td { padding: 9px 0px 10px 0px; text-indent: 10px;}
 .ui-jqgrid tr.jqgfirstrow td {}
 .ui-jqgrid tr.jqgroup td {}
 .ui-jqgrid tr.jqfoot td {}

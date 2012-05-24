@@ -77,9 +77,9 @@ namespace FubuMVC.Core.Diagnostics
             }
         }
 
-        public string Url { get; set; }
+        public string Url { get; private set; }
         public string HttpMethod { get; private set; }
-        public DateTime Time { get; set; }
+        public DateTime Time { get; private set; }
 
         public IDictionary<string, object> FormData { get; private set; }
         public IDictionary<string, string> Headers { get; private set; }

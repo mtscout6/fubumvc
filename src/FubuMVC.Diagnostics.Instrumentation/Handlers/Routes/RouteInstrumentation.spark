@@ -3,8 +3,8 @@
 <use namespace="System.Linq" />
 <use namespace="FubuMVC.Diagnostics.Models.Grids" />
 <use namespace="FubuMVC.Diagnostics.Features.Requests" />
-<use namespace="FubuMVC.Diagnostics.Instrumentation.Models" />
-<viewdata model="FubuMVC.Diagnostics.Instrumentation.Models.InstrumentationCacheModel" />
+<use namespace="FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models" />
+<viewdata model="FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models.InstrumentationCacheModel" />
 <content:title>Route Instrumentation Explorer</content:title>
 <content:head>
   <Script src="instrumentation.js" />

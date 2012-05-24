@@ -1,9 +1,9 @@
 ﻿using FubuMVC.Diagnostics.Core.Grids;
-using FubuMVC.Diagnostics.Instrumentation.Models;
+using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 using FubuMVC.Diagnostics.Models;
 using FubuMVC.Diagnostics.Models.Grids;
 
-namespace FubuMVC.Diagnostics.Instrumentation.Filter
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Filter
 {
     public class PostHandler
     {

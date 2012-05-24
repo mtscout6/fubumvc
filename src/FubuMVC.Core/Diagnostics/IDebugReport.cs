@@ -15,9 +15,9 @@ namespace FubuMVC.Core.Diagnostics
         void StartModelBinding(Type type);
         void EndModelBinding(object target);
         void AddBindingDetail(IModelBindingDetail binding);
-        string Url { get; set; }
+        string Url { get; }
         string HttpMethod { get; }
-        DateTime Time { get; set; }
+        DateTime Time { get; }
         IDictionary<string, object> FormData { get; }
         IDictionary<string, string> Headers { get; }
         double ExecutionTime { get; }

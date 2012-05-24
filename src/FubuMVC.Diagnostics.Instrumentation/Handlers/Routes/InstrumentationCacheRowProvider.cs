@@ -1,7 +1,8 @@
 using System.Collections.Generic;
-using FubuMVC.Diagnostics.Instrumentation.Models;
+using FubuMVC.Diagnostics.Core.Grids;
+using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 
-namespace FubuMVC.Diagnostics.Core.Grids
+namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes
 {
     public class InstrumentationCacheRowProvider : IGridRowProvider<InstrumentationCacheModel, RouteInstrumentationModel>
     {
