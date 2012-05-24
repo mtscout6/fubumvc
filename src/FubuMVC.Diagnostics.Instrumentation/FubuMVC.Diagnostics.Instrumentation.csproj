@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Scripts\instrumentation.js" />
+    <Content Include="Content\Styles\instrumentation.css" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,7 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />
-    <Folder Include="Content\Styles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Core\FubuMVC.Core.csproj">

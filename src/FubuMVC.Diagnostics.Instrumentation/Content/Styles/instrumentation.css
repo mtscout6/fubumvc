@@ -1,0 +1,13 @@
+.ui-icon-info .ui-corner-all{
+  margin-top: 20px;
+  padding: 0 .7em;
+}
+
+#NoData, #filter-dialog  {
+  display:none;
+}
+
+.ui-icon-info {
+  float: left;
+  margin-right: .3em;
+}

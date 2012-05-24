@@ -1,3 +1,3 @@
-﻿$(document).ready(function() {
-  $.gridwrapper.initGrid('#request-explorer');
+﻿$(function() {
+  $.gridwrapper.initGrid('#instrumentation-explorer');
 });
