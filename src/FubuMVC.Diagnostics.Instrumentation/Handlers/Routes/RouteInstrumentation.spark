@@ -16,7 +16,7 @@
 </content:head>
 
 <content:mainContent>
-  <h2 id="route-heading">Route Instrumentation Explore </h2>
+  <h2 id="route-heading">Route Instrumentation Explorer</h2>
   <p class="hint">(Use ctrl+f to apply filters)</p>
 
   <div class="ui-widget" id="NoData">

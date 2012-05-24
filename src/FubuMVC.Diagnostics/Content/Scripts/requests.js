@@ -1,4 +1,4 @@
-﻿$(document).ready(function() {
+﻿$(function() {
   $.gridwrapper.initGrid('#request-explorer',{
     sortname: 'Time',
     sortorder: 'desc',

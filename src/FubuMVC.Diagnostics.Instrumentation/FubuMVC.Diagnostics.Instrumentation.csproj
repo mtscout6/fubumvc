@@ -45,14 +45,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handlers\Routes\Autocomplete\PostHandler.cs" />
+    <Compile Include="Handlers\Routes\Columns\AverageExecutionColumn.cs" />
+    <Compile Include="Handlers\Routes\Columns\MaxExecutionColumn.cs" />
+    <Compile Include="Handlers\Routes\Columns\MinExecutionColumn.cs" />
     <Compile Include="Handlers\Routes\Columns\RequestUrlColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\UrlColumn.cs" />
+    <Compile Include="Handlers\Routes\Columns\RouteColumn.cs" />
     <Compile Include="Handlers\Routes\Columns\HitCountColumn.cs" />
     <Compile Include="Diagnostics\InstrumentationReportCache.cs" />
     <Compile Include="Diagnostics\RouteInstrumentationReport.cs" />
+    <Compile Include="Handlers\Routes\Filter\AverageExecutionFilter.cs" />
+    <Compile Include="Handlers\Routes\Filter\MaxExecutionFilter.cs" />
+    <Compile Include="Handlers\Routes\Filter\MinExecutionFilter.cs" />
     <Compile Include="Handlers\Routes\Filter\HitCountFilter.cs" />
     <Compile Include="Handlers\Routes\Filter\PostHandler.cs" />
-    <Compile Include="Handlers\Routes\Filter\UrlFilter.cs" />
+    <Compile Include="Handlers\Routes\Filter\RouteFilter.cs" />
     <Compile Include="Handlers\Routes\GetHandler.cs" />
     <Compile Include="Handlers\Routes\get_Coumn_Value_handler.cs">
       <SubType>Code</SubType>

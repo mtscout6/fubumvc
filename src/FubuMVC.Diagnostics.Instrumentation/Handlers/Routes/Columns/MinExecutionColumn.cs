@@ -3,21 +3,21 @@ using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 {
-    public class HitCountColumn : GridColumnBase<RouteInstrumentationModel>
+    public class MinExecutionColumn : GridColumnBase<RouteInstrumentationModel>
     {
-        public HitCountColumn() 
-            : base("Hit Count")
+        public MinExecutionColumn()
+            : base("Min Execution Time (ms)")
         {
         }
 
         public override string ValueFor(RouteInstrumentationModel target)
         {
-            return target.HitCount.ToString();
+            return target.MinExecution.ToString();
         }
 
         public override int Rank()
         {
-            return 3;
+            return 4;
         }
     }
 }

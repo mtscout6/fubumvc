@@ -19,8 +19,11 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models
             {
                 RouteInstrumentations = _instrumentationCache.Select(r => new RouteInstrumentationModel
                 {
-                    Url = r.Url,
-                    HitCount = r.HitCount
+                    Url = r.Route,
+                    HitCount = r.HitCount,
+                    AverageExecution = r.AverageExecutionTime,
+                    MaxExecution = r.MaxExecutionTime,
+                    MinExecution = r.MinExecutionTime
                 }).ToList()
             };
         }

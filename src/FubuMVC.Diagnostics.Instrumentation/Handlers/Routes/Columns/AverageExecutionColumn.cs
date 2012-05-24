@@ -3,21 +3,21 @@ using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 {
-    public class UrlColumn : GridColumnBase<RouteInstrumentationModel>
+    public class AverageExecutionColumn : GridColumnBase<RouteInstrumentationModel>
     {
-        public UrlColumn() 
-            : base("Url")
+        public AverageExecutionColumn()
+            : base("Average Execution Time (ms)")
         {
         }
 
         public override string ValueFor(RouteInstrumentationModel target)
         {
-            return target.Url;
+            return target.AverageExecution.ToString("F2");
         }
 
         public override int Rank()
         {
-            return 5;
+            return 4;
         }
     }
 }

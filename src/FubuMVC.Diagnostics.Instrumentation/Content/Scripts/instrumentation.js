@@ -1,7 +1,7 @@
 $(function() {
   $.gridwrapper.initGrid('#instrumentation-explorer',{
-    sortname: 'Hit Count',
-    sortorder: 'desc',
+    sortname: 'Route',
+    sortorder: 'asc',
     caption: 'Routes'
   });
 });

@@ -10,7 +10,7 @@ namespace FubuMVC.Core.Diagnostics.Tracing
         private readonly IDebugDetector _detector;
         private readonly IDebugReport _report;
         private readonly IDebugCallHandler _debugCallHandler;
-        private readonly Action _initialize;
+        private readonly Action _diagnostics;
 
         public DiagnosticBehavior(IDebugReport report, IDebugDetector detector, IDebugReportDistributer distributer, IDebugCallHandler debugCallHandler, IFubuRequest request)
         {
@@ -18,19 +18,19 @@ namespace FubuMVC.Core.Diagnostics.Tracing
             _debugCallHandler = debugCallHandler;
             _detector = detector;
 
-            _initialize = () => distributer.Publish(report, request.Get<CurrentRequest>());
+            _diagnostics = () => distributer.Publish(report, request.Get<CurrentRequest>());
         }
 
         public IActionBehavior Inner { get; set; }
 
         public void Invoke()
         {
-            _initialize();
             _report.RecordFormData();
 
             Inner.Invoke();
 
             write();
+            _diagnostics();
         }
 
         public void InvokePartial()
