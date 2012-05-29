@@ -2,7 +2,6 @@
 <use namespace="FubuMVC.Core.Registration" />
 <use namespace="System.Linq" />
 <use namespace="FubuMVC.Diagnostics.Models.Grids" />
-<use namespace="FubuMVC.Diagnostics.Features.Requests" />
 <use namespace="FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models" />
 <viewdata model="FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models.InstrumentationCacheModel" />
 

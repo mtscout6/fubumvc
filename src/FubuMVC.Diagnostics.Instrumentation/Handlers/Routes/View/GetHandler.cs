@@ -2,9 +2,8 @@
 
 namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View
 {
-    public class GetHandler
+    public class get_Id_handler
     {
-        //[FubuDiagnosticsUrl("~/instrumentation/{Id}")]
         public InstrumentationDetailsModel Execute(InstrumentationInputModel inputModel)
         {
             return new InstrumentationDetailsModel();

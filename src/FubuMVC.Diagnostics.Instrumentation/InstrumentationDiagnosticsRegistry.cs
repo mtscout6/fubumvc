@@ -16,8 +16,8 @@ namespace FubuMVC.Diagnostics.Instrumentation
             Applies
                 .ToAssemblyContainingType<InstrumentationDiagnosticsRegistry>();
 
-            ApplyHandlerConventions(markers => new DiagnosticsHandlerUrlPolicy(markers),
-                                    typeof (InstrumentationHandlers));
+            ApplyHandlerConventions(markers => new InstrumentationHandlerUrlPolicy(markers),
+                                    typeof(InstrumentationHandlers));
 
             Views
                 .TryToAttachWithDefaultConventions();

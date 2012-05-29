@@ -15,12 +15,17 @@ namespace FubuMVC.Diagnostics.Core.Configuration.Policies
 
         public override bool Matches(ActionCall call, IConfigurationObserver log)
         {
-            if(!call.IsDiagnosticsHandler())
+            if(!IsDiagnosticsHandler(call))
             {
                 return false;
             }
 
             return base.Matches(call, log);
+        }
+
+        protected virtual bool IsDiagnosticsHandler(ActionCall call)
+        {
+            return call.IsDiagnosticsHandler();
         }
 
         protected override void visit(IRouteDefinition routeDefinition)
