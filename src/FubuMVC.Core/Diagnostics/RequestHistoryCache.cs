@@ -8,10 +8,10 @@ namespace FubuMVC.Core.Diagnostics
     public class RequestHistoryCache : IRequestHistoryCache
     {
         private readonly ConcurrentQueue<IDebugReport> _reports = new ConcurrentQueue<IDebugReport>();
-        private readonly IEnumerable<IRequestHistoryCacheFilter> _filters;
+        private readonly IEnumerable<ICacheFilter> _filters;
         private readonly DiagnosticsConfiguration _configuration;
 
-        public RequestHistoryCache(IEnumerable<IRequestHistoryCacheFilter> filters, DiagnosticsConfiguration configuration)
+        public RequestHistoryCache(IEnumerable<ICacheFilter> filters, DiagnosticsConfiguration configuration)
         {
             _filters = filters;
             _configuration = configuration;
@@ -39,16 +39,16 @@ namespace FubuMVC.Core.Diagnostics
         }
     }
 
-    public interface IRequestHistoryCacheFilter
+    public interface ICacheFilter
     {
         bool Exclude(CurrentRequest request);
     }
 
-    public class LambdaRequestHistoryCacheFilter : IRequestHistoryCacheFilter
+    public class LambdaCacheFilter : ICacheFilter
     {
         private readonly Func<CurrentRequest, bool> _shouldExclude;
 
-        public LambdaRequestHistoryCacheFilter(Func<CurrentRequest, bool> shouldExclude)
+        public LambdaCacheFilter(Func<CurrentRequest, bool> shouldExclude)
         {
             _shouldExclude = shouldExclude;
         }

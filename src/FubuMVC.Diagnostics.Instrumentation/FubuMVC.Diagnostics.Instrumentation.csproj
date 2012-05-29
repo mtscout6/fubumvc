@@ -68,6 +68,7 @@
     <Compile Include="Handlers\Routes\Models\InstrumentationCacheModelBuilder.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRouteRequestModel.cs" />
     <Compile Include="Handlers\Routes\View\GetHandler.cs" />
+    <Compile Include="InstrumentationUrlPolicy.cs" />
     <Compile Include="Navigation\InstrumentationExplorerAction.cs" />
     <Compile Include="InstrumentationDiagnosticsRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

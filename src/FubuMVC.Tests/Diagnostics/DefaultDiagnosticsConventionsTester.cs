@@ -29,7 +29,7 @@ namespace FubuMVC.Tests.Diagnostics
         [Test]
         public void should_exclude_diagnostics_requests()
         {
-            var filter = _registry.BuildGraph().Services.FindAllValues<IRequestHistoryCacheFilter>().First();
+            var filter = _registry.BuildGraph().Services.FindAllValues<ICacheFilter>().First();
 
             var request = new CurrentRequest {Path = "/{0}/requests".ToFormat(DiagnosticUrlPolicy.DIAGNOSTICS_URL_ROOT)};
             filter.Exclude(request).ShouldBeTrue();

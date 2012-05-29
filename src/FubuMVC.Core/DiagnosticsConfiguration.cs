@@ -12,13 +12,13 @@ namespace FubuMVC.Core
     public interface IDiagnosticsConfigurationExpression
     {
         void LimitRecordingTo(int nrRequests);
-        void ExcludeRequests(IRequestHistoryCacheFilter filter);
+        void ExcludeRequests(ICacheFilter filter);
     }
 
     public static class DiagnosticsConfigurationExtensions
     {
         public static void ApplyFilter<TFilter>(this IDiagnosticsConfigurationExpression config)
-            where TFilter : IRequestHistoryCacheFilter, new()
+            where TFilter : ICacheFilter, new()
         {
             config.ExcludeRequests(new TFilter());
         }
@@ -26,15 +26,15 @@ namespace FubuMVC.Core
         public static void ExcludeRequests(this IDiagnosticsConfigurationExpression config,
                                            Func<CurrentRequest, bool> shouldExclude)
         {
-            config.ExcludeRequests(new LambdaRequestHistoryCacheFilter(shouldExclude));
+            config.ExcludeRequests(new LambdaCacheFilter(shouldExclude));
         }
     }
 
     public class DiagnosticsConfigurationExpression : IDiagnosticsConfigurationExpression
     {
-        private readonly IList<IRequestHistoryCacheFilter> _filters;
+        private readonly IList<ICacheFilter> _filters;
 
-        public DiagnosticsConfigurationExpression(IList<IRequestHistoryCacheFilter> filters)
+        public DiagnosticsConfigurationExpression(IList<ICacheFilter> filters)
         {
             _filters = filters;
         }
@@ -46,7 +46,7 @@ namespace FubuMVC.Core
             MaxRequests = nrRequests;
         }
 
-        public void ExcludeRequests(IRequestHistoryCacheFilter filter)
+        public void ExcludeRequests(ICacheFilter filter)
         {
             _filters.Fill(filter);
         }

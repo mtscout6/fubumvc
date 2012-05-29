@@ -15,12 +15,14 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 
     public class InstrumentationReportCache : IInstrumentationReportCache
     {
+        private readonly IEnumerable<ICacheFilter> _filters;
         private readonly BehaviorGraph _graph;
         private readonly DiagnosticsConfiguration _configuration;
         private readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports;
 
-        public InstrumentationReportCache(BehaviorGraph graph, DiagnosticsConfiguration configuration)
+        public InstrumentationReportCache(IEnumerable<ICacheFilter> filters, BehaviorGraph graph, DiagnosticsConfiguration configuration)
         {
+            _filters = filters;
             _graph = graph;
             _configuration = configuration;
             _instrumentationReports = new ConcurrentDictionary<Guid, RouteInstrumentationReport>();
@@ -28,6 +30,11 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 
         public void AddReport(IDebugReport debugReport, CurrentRequest request)
         {
+            if (_filters.Any(f => f.Exclude(request)))
+            {
+                return;
+            }
+
             _instrumentationReports.AddOrUpdate(debugReport.BehaviorId,
                 guid =>
                 {

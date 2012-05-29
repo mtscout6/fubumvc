@@ -29,7 +29,7 @@ namespace FubuMVC.Tests.Diagnostics
         [Test]
         public void only_keeps_maximum_records()
         {
-            MockFor<IRequestHistoryCacheFilter>()
+            MockFor<ICacheFilter>()
                 .Expect(c => c.Exclude(theCurrentRequest))
                 .Return(false)
                 .Repeat
@@ -51,7 +51,7 @@ namespace FubuMVC.Tests.Diagnostics
         [Test]
         public void keep_the_newest_reports()
         {
-            MockFor<IRequestHistoryCacheFilter>()
+            MockFor<ICacheFilter>()
                 .Expect(c => c.Exclude(theCurrentRequest))
                 .Return(false)
                 .Repeat
@@ -82,7 +82,7 @@ namespace FubuMVC.Tests.Diagnostics
         [Test]
         public void should_not_add_report_if_any_filter_excludes()
         {
-            MockFor<IRequestHistoryCacheFilter>()
+            MockFor<ICacheFilter>()
                 .Expect(c => c.Exclude(theCurrentRequest))
                 .Return(true);
 

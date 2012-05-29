@@ -253,7 +253,7 @@ namespace FubuMVC.Core
         {
             _diagnosticLevel = DiagnosticLevel.FullRequestTracing;
 
-            var filters = new List<IRequestHistoryCacheFilter>();
+            var filters = new List<ICacheFilter>();
             var config = new DiagnosticsConfigurationExpression(filters);
             configure(config);
 
@@ -264,7 +264,7 @@ namespace FubuMVC.Core
                     MaxRequests = config.MaxRequests
                 });
                 filters
-                    .Each(filter => graph.AddService(typeof (IRequestHistoryCacheFilter), new ObjectDef{
+                    .Each(filter => graph.AddService(typeof (ICacheFilter), new ObjectDef{
                         Type = filter.GetType(),
                         Value = filter
                     }));
