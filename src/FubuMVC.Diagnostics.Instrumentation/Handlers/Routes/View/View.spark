@@ -2,14 +2,7 @@
 <use master="TwoColumn" />
 
 <macro:Header type="string" dateTime="string" executionTime="string">
-  <div class="alert-message ${type}">
-    <p>
-      <strong>Date Time:</strong>
-      <span>${dateTime}</span>
-      <strong>Execution Time:</strong>
-      <span>${executionTime}</span>
-    </p>
-  </div>
+
 </macro:Header>
 
 <content:title></content:title>
@@ -21,21 +14,40 @@
 <content:rightColumn>
   <div class="page-header">
     <h1 class="route">
-      <span>Route:</span> [TODO]
-      <span class="label">(TODO)</span>
+      <span>Route:</span> ${Model.Url}
+      <small>(Chain ${Model.Id})</small>
     </h1>
   </div>
   <div class="well">
     <h5>Overview</h5>
     <ul>
       <li>
-
+        <span>Average Execution Time(ms):</span> ${Model.AverageExecution.ToString("F2")}
+      </li>
+      <li>
+        <span>Exception Count:</span> ${Model.ExceptionCount}
+      </li>
+      <li>
+        <span>Hit Count:</span> ${Model.HitCount}
+      </li>
+      <li>
+        <span>Maximum Execution Time:</span> ${Model.MaxExecution}
+      </li>
+      <li>
+        <span>Minimum Execution Time:</span> ${Model.MinExecution}
       </li>
     </ul>
   </div>
 
-  ${Header("error","TODO", "TODO")}
-  ${Header("info","TODO", "TODO")}
-  ${Header("success","TODO", "TODO")}
-  ${Header("","TODO", "TODO")}
+<for each="var overview in Model.RequestOverviews">
+  <div class="alert-message ${overview.HasException ? "error" : "info"}">
+    <p>
+      <strong>Date Time:</strong>
+      <span>${overview.DateTime}</span>
+      <strong>Execution Time:</strong>
+      <span>${overview.ExecutionTime}</span>
+    </p>
+  </div>
+</for>
+
 </content:rightColumn>

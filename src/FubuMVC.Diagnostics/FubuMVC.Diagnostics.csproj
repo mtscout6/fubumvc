@@ -108,7 +108,9 @@
     <None Include="Notifications\NoOutputs.spark">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Features\Requests\View\View.spark" />
+    <None Include="Features\Requests\View\View.spark">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="packages.config" />
     <None Include="Shared\Application.spark" />
     <Content Include="Content\Images\block.png" />

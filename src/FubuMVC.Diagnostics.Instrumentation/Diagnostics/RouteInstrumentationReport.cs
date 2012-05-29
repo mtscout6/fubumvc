@@ -15,7 +15,8 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         private long _minExecutionTime = long.MaxValue;
         private long _maxExecutionTime;
         private long _totalExecutionTime;
-        private readonly ConcurrentQueue<IDebugReport> _requestCache;
+        public IList<IDebugReport> Reports { get { return _reportCache.ToArray(); } }
+        private readonly ConcurrentQueue<IDebugReport> _reportCache;
         private readonly DiagnosticsConfiguration _configuration;
 
         public decimal AverageExecutionTime { get { return _totalExecutionTime * 1m / _hitCount; } }
@@ -30,7 +31,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         public RouteInstrumentationReport(DiagnosticsConfiguration configuration, Guid behaviorId)
         {
             _configuration = configuration;
-            _requestCache = new ConcurrentQueue<IDebugReport>();
+            _reportCache = new ConcurrentQueue<IDebugReport>();
             BehaviorId = behaviorId;
         }
 
@@ -53,12 +54,12 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
             IncrementHitCount();
             AddExecutionTime((long)report.ExecutionTime);
 
-            _requestCache.Enqueue(report);
+            _reportCache.Enqueue(report);
 
-            while (_requestCache.Count > _configuration.MaxRequests)
+            while (_reportCache.Count > _configuration.MaxRequests)
             {
                 IDebugReport r;
-                _requestCache.TryDequeue(out r);
+                _reportCache.TryDequeue(out r);
             }
         }
 

@@ -18,14 +18,14 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         private readonly IEnumerable<ICacheFilter> _filters;
         private readonly BehaviorGraph _graph;
         private readonly DiagnosticsConfiguration _configuration;
-        private readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports;
+        private static readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports =
+            new ConcurrentDictionary<Guid, RouteInstrumentationReport>();
 
         public InstrumentationReportCache(IEnumerable<ICacheFilter> filters, BehaviorGraph graph, DiagnosticsConfiguration configuration)
         {
             _filters = filters;
             _graph = graph;
             _configuration = configuration;
-            _instrumentationReports = new ConcurrentDictionary<Guid, RouteInstrumentationReport>();
         }
 
         public void AddReport(IDebugReport debugReport, CurrentRequest request)
@@ -62,6 +62,12 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         public IEnumerator<RouteInstrumentationReport> GetEnumerator()
         {
             return _instrumentationReports.Values.GetEnumerator();
+        }
+
+        public RouteInstrumentationReport GetReport(Guid behaviorId)
+        {
+            RouteInstrumentationReport report;
+            return _instrumentationReports.TryGetValue(behaviorId, out report) ? report : null;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
