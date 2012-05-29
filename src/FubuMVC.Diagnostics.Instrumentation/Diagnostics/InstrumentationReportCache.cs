@@ -35,11 +35,11 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
                     var chain = _graph.Behaviors.SingleOrDefault(c => c.UniqueId == debugReport.BehaviorId);
                     if (chain != null && chain.Route != null)
                     {
-                        report = new RouteInstrumentationReport(chain.Route.Pattern, _configuration);
+                        report = new RouteInstrumentationReport(chain.Route.Pattern, _configuration, debugReport.BehaviorId);
                     }
                     else
                     {
-                        report = new RouteInstrumentationReport(_configuration);
+                        report = new RouteInstrumentationReport(_configuration, debugReport.BehaviorId);
                     }
 
                     report.AddDebugReport(debugReport);

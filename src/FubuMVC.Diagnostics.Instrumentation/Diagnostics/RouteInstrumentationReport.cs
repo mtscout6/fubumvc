@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
@@ -24,15 +25,17 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         public long MaxExecutionTime { get { return _maxExecutionTime; } }
 
         public string Route { get; private set; }
+        public Guid BehaviorId { get; private set; }
 
-        public RouteInstrumentationReport(DiagnosticsConfiguration configuration)
+        public RouteInstrumentationReport(DiagnosticsConfiguration configuration, Guid behaviorId)
         {
             _configuration = configuration;
             _requestCache = new ConcurrentQueue<IDebugReport>();
+            BehaviorId = behaviorId;
         }
 
-        public RouteInstrumentationReport(string route, DiagnosticsConfiguration configuration)
-            : this(configuration)
+        public RouteInstrumentationReport(string route, DiagnosticsConfiguration configuration, Guid behaviorId)
+            : this(configuration, behaviorId)
         {
             Route = route;
         }
