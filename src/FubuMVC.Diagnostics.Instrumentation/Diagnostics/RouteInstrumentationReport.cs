@@ -14,8 +14,8 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         private long _minExecutionTime = long.MaxValue;
         private long _maxExecutionTime;
         private long _totalExecutionTime;
-        private ConcurrentDictionary<Guid, IList<string>> _exceptions;
-        public Guid BehaviorId { get; private set; }
+        private readonly ConcurrentQueue<IDebugReport> _requestCache;
+        private readonly DiagnosticsConfiguration _configuration;
 
         public decimal AverageExecutionTime { get { return _totalExecutionTime * 1m / _hitCount; } }
         public long ExceptionCount { get { return _exceptionCount; } }
@@ -25,14 +25,14 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 
         public string Route { get; private set; }
 
-        public RouteInstrumentationReport(Guid behaviorId)
+        public RouteInstrumentationReport(DiagnosticsConfiguration configuration)
         {
-            _exceptions = new ConcurrentDictionary<Guid, IList<string>>();
-            BehaviorId = behaviorId;
+            _configuration = configuration;
+            _requestCache = new ConcurrentQueue<IDebugReport>();
         }
 
-        public RouteInstrumentationReport(Guid behaviorId, string route)
-            : this(behaviorId)
+        public RouteInstrumentationReport(string route, DiagnosticsConfiguration configuration)
+            : this(configuration)
         {
             Route = route;
         }

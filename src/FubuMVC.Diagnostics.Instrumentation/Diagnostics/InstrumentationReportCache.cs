@@ -6,7 +6,6 @@ using System.Linq;
 using FubuMVC.Core;
 using FubuMVC.Core.Diagnostics;
 using FubuMVC.Core.Registration;
-using FubuMVC.Diagnostics.Features.Requests;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 {
@@ -36,11 +35,11 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
                     var chain = _graph.Behaviors.SingleOrDefault(c => c.UniqueId == debugReport.BehaviorId);
                     if (chain != null && chain.Route != null)
                     {
-                        report = new RouteInstrumentationReport(debugReport.BehaviorId, chain.Route.Pattern);
+                        report = new RouteInstrumentationReport(chain.Route.Pattern, _configuration);
                     }
                     else
                     {
-                        report = new RouteInstrumentationReport(debugReport.BehaviorId);
+                        report = new RouteInstrumentationReport(_configuration);
                     }
 
                     report.AddDebugReport(debugReport);
