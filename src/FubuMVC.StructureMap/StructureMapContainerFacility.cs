@@ -22,7 +22,6 @@ namespace FubuMVC.StructureMap
         private readonly IContainer _container;
         private readonly Registry _registry;
 
-
         private bool _initializeSingletonsToWorkAroundSMBug = true;
 
         public StructureMapContainerFacility(IContainer container)
@@ -44,7 +43,8 @@ namespace FubuMVC.StructureMap
                     });
                 }
 
-                if (ServiceRegistry.ShouldBeSingleton(serviceType))
+                if (ServiceRegistry.ShouldBeSingleton(serviceType) ||
+                   (def.Type != null && ServiceRegistry.ShouldBeSingleton(def.Type)))
                 {
                     _registry.For(serviceType).Singleton();
                 }

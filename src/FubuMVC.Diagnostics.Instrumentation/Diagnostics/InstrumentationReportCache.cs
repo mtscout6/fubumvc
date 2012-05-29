@@ -10,7 +10,7 @@ using FubuMVC.Diagnostics.Features.Requests;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 {
-    public interface IInstrumentationReportCache : IEnumerable<RouteInstrumentationReport>
+    public interface IInstrumentationReportCache : IEnumerable<RouteInstrumentationReport>, IDebugReportConsumer
     {
     }
 
@@ -19,14 +19,13 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         private readonly BehaviorGraph _graph;
         private readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports;
 
-        public InstrumentationReportCache(IDebugReportDistributer distributer, BehaviorGraph graph)
+        public InstrumentationReportCache(BehaviorGraph graph)
         {
             _graph = graph;
             _instrumentationReports = new ConcurrentDictionary<Guid, RouteInstrumentationReport>();
-            distributer.Register(AddReport);
         }
 
-        private void AddReport(IDebugReport debugReport, CurrentRequest request)
+        public void AddReport(IDebugReport debugReport, CurrentRequest request)
         {
             var incrementValues = new Action<RouteInstrumentationReport>(report => 
             {

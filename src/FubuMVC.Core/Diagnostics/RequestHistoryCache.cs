@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,19 +7,18 @@ namespace FubuMVC.Core.Diagnostics
 {
     public class RequestHistoryCache : IRequestHistoryCache
     {
-        private readonly Queue<IDebugReport> _reports = new Queue<IDebugReport>();
+        private readonly ConcurrentQueue<IDebugReport> _reports = new ConcurrentQueue<IDebugReport>();
         private readonly IEnumerable<IRequestHistoryCacheFilter> _filters;
         private readonly DiagnosticsConfiguration _configuration;
 
-        public RequestHistoryCache(IEnumerable<IRequestHistoryCacheFilter> filters, DiagnosticsConfiguration configuration, IDebugReportDistributer reportDistributer)
+        public RequestHistoryCache(IEnumerable<IRequestHistoryCacheFilter> filters, DiagnosticsConfiguration configuration)
         {
             _filters = filters;
             _configuration = configuration;
-            reportDistributer.Register(AddReport);
         }
 
         // TODO -- let's thin this down from CurrentRequest
-        private void AddReport(IDebugReport report, CurrentRequest request)
+        public void AddReport(IDebugReport report, CurrentRequest request)
         {
             if(_filters.Any(f => f.Exclude(request)))
             {
@@ -28,7 +28,8 @@ namespace FubuMVC.Core.Diagnostics
             _reports.Enqueue(report);
             while (_reports.Count > _configuration.MaxRequests)
             {
-                _reports.Dequeue();
+                IDebugReport r;
+                _reports.TryDequeue(out r);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using FubuMVC.Core;
+using FubuMVC.Core.Registration;
 using FubuMVC.Diagnostics.Core.Configuration.Policies;
 using FubuMVC.Diagnostics.Core.Grids;
 using FubuMVC.Diagnostics.Instrumentation.Diagnostics;
@@ -23,14 +24,12 @@ namespace FubuMVC.Diagnostics.Instrumentation
 
             Routes
                 .UrlPolicy<DiagnosticsAttributeUrlPolicy>();
-
+            
             Services(x =>
             {
                 x.SetServiceIfNone<IInstrumentationReportCache, InstrumentationReportCache>();
                 x.SetServiceIfNone<IGridRowProvider<InstrumentationCacheModel, RouteInstrumentationModel>, InstrumentationCacheRowProvider>();
             });
-
-
 
             Import<SparkEngine>();
         }

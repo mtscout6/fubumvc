@@ -19,7 +19,7 @@ namespace FubuMVC.Tests.Diagnostics
             theCurrentRequest = new CurrentRequest();
 
             _configuration = new DiagnosticsConfiguration {MaxRequests = 60};
-            _distributer = new DebugReportDistributer();
+//            _distributer = new DebugReportDistributer();
 
             Container.Inject(theCurrentRequest);
             Container.Inject(_configuration);

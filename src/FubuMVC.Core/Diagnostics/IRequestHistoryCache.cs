@@ -2,7 +2,7 @@
 
 namespace FubuMVC.Core.Diagnostics
 {
-    public interface IRequestHistoryCache
+    public interface IRequestHistoryCache : IDebugReportConsumer
     {
         IEnumerable<IDebugReport> RecentReports();
     }

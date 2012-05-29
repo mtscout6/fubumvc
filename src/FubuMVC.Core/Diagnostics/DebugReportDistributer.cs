@@ -1,24 +1,63 @@
 using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading;
+using FubuMVC.Core.Registration;
+using StructureMap;
+using System.Linq;
 
 namespace FubuMVC.Core.Diagnostics
 {
+    [Singleton]
     public class DebugReportDistributer : IDebugReportDistributer
     {
-        private static readonly ConcurrentBag<Action<IDebugReport, CurrentRequest>> _actions = new ConcurrentBag<Action<IDebugReport, CurrentRequest>>();
+        private readonly IContainer _container;
+        private bool _scanned;
+        private int _scanners;
+        private IList<Type> _consumerInterfaces;
 
-        public void Register(Action<IDebugReport, CurrentRequest> action)
+        public DebugReportDistributer(IContainer container)
         {
-            _actions.Add(action);
+            _container = container;
         }
 
         public void Publish(IDebugReport report, CurrentRequest request)
         {
-            var copies = _actions.ToArray();
-            foreach (var action in copies)
+            if (!_scanned)
             {
-                action(report, request);
+                var scannerCount = Interlocked.Increment(ref _scanners);
+
+                if (scannerCount == 1)
+                    ScanForConsumerInterfaces();
+                else
+                {
+                    while(!_scanned)
+                        Thread.SpinWait(100);
+                }
             }
+
+            foreach (var consumer in ResolveConsumers())
+            {
+                consumer.AddReport(report, request);
+            }
+        }
+
+        private IEnumerable<IDebugReportConsumer> ResolveConsumers()
+        {
+            return _consumerInterfaces
+               .SelectMany(derivedInterface => _container.GetAllInstances(derivedInterface).Cast<IDebugReportConsumer>())
+               .Distinct();
+        } 
+
+        private void ScanForConsumerInterfaces()
+        {
+            var typePool = new TypePool(null);
+            typePool.AddAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+
+            _consumerInterfaces = typePool
+                .TypesMatching(t => t.IsInterface && t.GetInterfaces().Contains(typeof (IDebugReportConsumer)))
+                .ToList();
+
+            _scanned = true;
         }
     }
 }
