@@ -1,5 +1,17 @@
 ﻿<viewdata model="FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models.InstrumentationDetailsModel"/>
 <use master="TwoColumn" />
+
+<macro:Header type="string" dateTime="string" executionTime="string">
+  <div class="alert-message ${type}">
+    <p>
+      <strong>Date Time:</strong>
+      <span>${dateTime}</span>
+      <strong>Execution Time:</strong>
+      <span>${executionTime}</span>
+    </p>
+  </div>
+</macro:Header>
+
 <content:title></content:title>
 <content:head>
 </content:head>
@@ -7,5 +19,23 @@
   <h5>Behavior Chain</h5>
 </content:leftColumn>
 <content:rightColumn>
+  <div class="page-header">
+    <h1 class="route">
+      <span>Route:</span> [TODO]
+      <span class="label">(TODO)</span>
+    </h1>
+  </div>
+  <div class="well">
+    <h5>Overview</h5>
+    <ul>
+      <li>
 
+      </li>
+    </ul>
+  </div>
+
+  ${Header("error","TODO", "TODO")}
+  ${Header("info","TODO", "TODO")}
+  ${Header("success","TODO", "TODO")}
+  ${Header("","TODO", "TODO")}
 </content:rightColumn>
