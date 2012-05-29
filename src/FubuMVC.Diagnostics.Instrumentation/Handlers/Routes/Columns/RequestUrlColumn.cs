@@ -16,9 +16,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 
         public override string ValueFor(RouteInstrumentationModel target)
 		{
-            //This should be getting the url for the details page for this action(the drill down page)
-			//return _urls.UrlFor(new RecordedRequestRequestModel {Id = target.Id});
-            return string.Empty;
+			return _urls.UrlFor(new InstrumentationInputModel {Id = target.Id});
 		}
 
 		public override bool IsIdentifier()

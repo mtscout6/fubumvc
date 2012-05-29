@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\InstrumentationHandlers.cs" />
     <Compile Include="Handlers\Routes\Autocomplete\PostHandler.cs" />
     <Compile Include="Handlers\Routes\Columns\AverageExecutionColumn.cs" />
     <Compile Include="Handlers\Routes\Columns\ExceptionCountColumn.cs" />
@@ -59,14 +60,14 @@
     <Compile Include="Handlers\Routes\Filter\PostHandler.cs" />
     <Compile Include="Handlers\Routes\Filter\RouteFilter.cs" />
     <Compile Include="Handlers\Routes\GetHandler.cs" />
-    <Compile Include="Handlers\Routes\get_Coumn_Value_handler.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Handlers\Routes\Models\InstrumentationDetailsModel.cs" />
+    <Compile Include="Handlers\Routes\Models\InstrumentationInputModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRequestModel.cs" />
     <Compile Include="Handlers\Routes\Models\RouteInstrumentationModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationCacheModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationCacheModelBuilder.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRouteRequestModel.cs" />
+    <Compile Include="Handlers\Routes\View\GetHandler.cs" />
     <Compile Include="Navigation\InstrumentationExplorerAction.cs" />
     <Compile Include="InstrumentationDiagnosticsRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +83,7 @@
     <Content Include="instrumentation.spark.config" />
     <Content Include="instrumentation.script.config" />
     <None Include="Handlers\Routes\RouteInstrumentation.spark" />
+    <None Include="Handlers\Routes\View\View.spark" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />

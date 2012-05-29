@@ -1,0 +1,11 @@
+﻿<viewdata model="FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models.InstrumentationDetailsModel"/>
+<use master="TwoColumn" />
+<content:title></content:title>
+<content:head>
+</content:head>
+<content:leftColumn>
+  <h5>Behavior Chain</h5>
+</content:leftColumn>
+<content:rightColumn>
+
+</content:rightColumn>
