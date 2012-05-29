@@ -13,7 +13,7 @@
     </if>
     <small>(Chain ${Model.Chain.UniqueId.ToString()})</small>
   </h2>
-  
+
   <h3>Nodes:</h3>
   <ul id="nodes">
     <li each="var behavior in Model.Behaviors">

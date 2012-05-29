@@ -7,5 +7,6 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models
         public decimal AverageExecution { get; set; }
         public long MinExecution { get; set; }
         public long MaxExecution { get; set; }
+        public long ExceptionCount { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace FubuMVC.Diagnostics.Core.Grids.Columns.Requests
 
 		public override int Rank()
 		{
-			return 1;
+			return 6;
 		}
 
 		public override string ValueFor(RecordedRequestModel target)

@@ -1,3 +1,5 @@
+using System;
+
 namespace QuickStart
 {
     public class HelloWorldController
@@ -16,6 +18,17 @@ namespace QuickStart
         public string HelloWorld2Html()
         {
             return "<html><body><h1>Hello world!</h1></body></html>";
+        }
+    }
+}
+
+namespace QuickStart
+{
+    public class HelloWorldExceptionController
+    {
+        public string HelloWorldException()
+        {
+            throw new Exception();
         }
     }
 }

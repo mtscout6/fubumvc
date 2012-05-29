@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Runtime;
 
@@ -25,12 +26,17 @@ namespace FubuMVC.Core.Diagnostics.Tracing
 
         public void Invoke()
         {
-            _report.RecordFormData();
+            try
+            {
+                _report.RecordFormData();
+                Inner.Invoke();
 
-            Inner.Invoke();
-
-            write();
-            _diagnostics();
+                write();
+            }
+            finally
+            {
+                _diagnostics();
+            }
         }
 
         public void InvokePartial()

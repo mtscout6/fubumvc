@@ -6,6 +6,7 @@ using System.Linq;
 using FubuMVC.Core;
 using FubuMVC.Core.Diagnostics;
 using FubuMVC.Core.Registration;
+using FubuMVC.Diagnostics.Features.Requests;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 {
@@ -29,6 +30,15 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         {
             var incrementValues = new Action<RouteInstrumentationReport>(report => 
             {
+                var visitor = new RecordedRequestBehaviorVisitor();
+                debugReport.Steps.Each(s => s.Details.AcceptVisitor(visitor));
+
+                if(visitor.HasExceptions())
+                {
+                    report.IncrementExceptionCount();
+                    report.RecordException(debugReport.BehaviorId, visitor.Exceptions());
+                }
+
                 report.IncrementHitCount();
                 report.AddExecutionTime((long)debugReport.ExecutionTime);
             });

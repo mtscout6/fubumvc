@@ -23,7 +23,8 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models
                     HitCount = r.HitCount,
                     AverageExecution = r.AverageExecutionTime,
                     MaxExecution = r.MaxExecutionTime,
-                    MinExecution = r.MinExecutionTime
+                    MinExecution = r.MinExecutionTime,
+                    ExceptionCount = r.ExceptionCount
                 }).ToList()
             };
         }

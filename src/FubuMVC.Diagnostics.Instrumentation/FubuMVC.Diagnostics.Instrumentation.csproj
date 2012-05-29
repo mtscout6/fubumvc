@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Handlers\Routes\Autocomplete\PostHandler.cs" />
     <Compile Include="Handlers\Routes\Columns\AverageExecutionColumn.cs" />
+    <Compile Include="Handlers\Routes\Columns\ExceptionCountColumn.cs" />
     <Compile Include="Handlers\Routes\Columns\MaxExecutionColumn.cs" />
     <Compile Include="Handlers\Routes\Columns\MinExecutionColumn.cs" />
     <Compile Include="Handlers\Routes\Columns\RequestUrlColumn.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Diagnostics\InstrumentationReportCache.cs" />
     <Compile Include="Diagnostics\RouteInstrumentationReport.cs" />
     <Compile Include="Handlers\Routes\Filter\AverageExecutionFilter.cs" />
+    <Compile Include="Handlers\Routes\Filter\ExceptionCountFilter.cs" />
     <Compile Include="Handlers\Routes\Filter\MaxExecutionFilter.cs" />
     <Compile Include="Handlers\Routes\Filter\MinExecutionFilter.cs" />
     <Compile Include="Handlers\Routes\Filter\HitCountFilter.cs" />
