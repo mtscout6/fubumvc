@@ -2,13 +2,13 @@
 <use namespace="FubuMVC.Diagnostics.Features.Requests" />
 <viewdata model="FubuMVC.Diagnostics.Features.Requests.BehaviorDetailsModel" />
 <div class="behavior" id="${Model.Id}" style="display:none">
-  <h3>!{Model.BehaviorType.PrettyPrint().HtmlEncode()}</h3>
+  <h3>${Model.BehaviorType.PrettyPrint()}</h3>
   <ul class="children">
     <li class="behavior-details" each="var detail in Model.Before">
       <BehaviorDetails details="detail"/>
     </li>
     <li if="Model.Inner != null" class="inner-behavior">
-      <a href="#behavior-visualizer" class="btn large {id: '${Model.Inner.Id}'}">!{Model.Inner.BehaviorType.PrettyPrint()}</a>
+      <a href="#behavior-visualizer" class="btn large {id: '${Model.Inner.Id}'}">${Model.Inner.BehaviorType.PrettyPrint()}</a>
     </li>
     <li class="behavior-details" each="var detail in Model.After">
       <BehaviorDetails details="detail"/>
