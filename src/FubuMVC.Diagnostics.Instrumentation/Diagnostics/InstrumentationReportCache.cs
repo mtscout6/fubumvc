@@ -17,30 +17,18 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
     public class InstrumentationReportCache : IInstrumentationReportCache
     {
         private readonly BehaviorGraph _graph;
+        private readonly DiagnosticsConfiguration _configuration;
         private readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports;
 
-        public InstrumentationReportCache(BehaviorGraph graph)
+        public InstrumentationReportCache(BehaviorGraph graph, DiagnosticsConfiguration configuration)
         {
             _graph = graph;
+            _configuration = configuration;
             _instrumentationReports = new ConcurrentDictionary<Guid, RouteInstrumentationReport>();
         }
 
         public void AddReport(IDebugReport debugReport, CurrentRequest request)
         {
-            var incrementValues = new Action<RouteInstrumentationReport>(report => 
-            {
-                var visitor = new RecordedRequestBehaviorVisitor();
-                debugReport.Steps.Each(s => s.Details.AcceptVisitor(visitor));
-
-                if(visitor.HasExceptions())
-                {
-                    report.IncrementExceptionCount();
-                    report.RecordException(debugReport.BehaviorId, visitor.Exceptions());
-                }
-
-                report.IncrementHitCount();
-                report.AddExecutionTime((long)debugReport.ExecutionTime);
-            });
             _instrumentationReports.AddOrUpdate(debugReport.BehaviorId,
                 guid =>
                 {
@@ -48,19 +36,19 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
                     var chain = _graph.Behaviors.SingleOrDefault(c => c.UniqueId == debugReport.BehaviorId);
                     if (chain != null && chain.Route != null)
                     {
-                        report = new RouteInstrumentationReport(chain.Route.Pattern);
+                        report = new RouteInstrumentationReport(chain.Route.Pattern, _configuration);
                     }
                     else
                     {
-                        report = new RouteInstrumentationReport();
+                        report = new RouteInstrumentationReport(_configuration);
                     }
 
-                    incrementValues(report);
+                    report.AddDebugReport(debugReport);
                     return report;
                 },
                 (guid, report) =>
                 {
-                    incrementValues(report);
+                    report.AddDebugReport(debugReport);
                     return report;
                 });
         }

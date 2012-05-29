@@ -1,7 +1,9 @@
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
+using FubuMVC.Core;
+using FubuMVC.Core.Diagnostics;
+using FubuMVC.Diagnostics.Features.Requests;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 {
@@ -12,7 +14,8 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         private long _minExecutionTime = long.MaxValue;
         private long _maxExecutionTime;
         private long _totalExecutionTime;
-        private ConcurrentDictionary<Guid, IList<string>> _exceptions;
+        private readonly ConcurrentQueue<IDebugReport> _requestCache;
+        private readonly DiagnosticsConfiguration _configuration;
 
         public decimal AverageExecutionTime { get { return _totalExecutionTime * 1m / _hitCount; } }
         public long ExceptionCount { get { return _exceptionCount; } }
@@ -22,15 +25,38 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 
         public string Route { get; private set; }
 
-        public RouteInstrumentationReport()
+        public RouteInstrumentationReport(DiagnosticsConfiguration configuration)
         {
-            _exceptions = new ConcurrentDictionary<Guid, IList<string>>();
+            _configuration = configuration;
+            _requestCache = new ConcurrentQueue<IDebugReport>();
         }
 
-        public RouteInstrumentationReport(string route)
-            : this()
+        public RouteInstrumentationReport(string route, DiagnosticsConfiguration configuration)
+            : this(configuration)
         {
             Route = route;
+        }
+
+        public void AddDebugReport(IDebugReport report)
+        {
+            var visitor = new RecordedRequestBehaviorVisitor();
+            report.Steps.Each(s => s.Details.AcceptVisitor(visitor));
+
+            if (visitor.HasExceptions())
+            {
+                IncrementExceptionCount();
+            }
+
+            IncrementHitCount();
+            AddExecutionTime((long)report.ExecutionTime);
+
+            _requestCache.Enqueue(report);
+
+            while (_requestCache.Count > _configuration.MaxRequests)
+            {
+                IDebugReport r;
+                _requestCache.TryDequeue(out r);
+            }
         }
 
         public void IncrementHitCount()
@@ -56,18 +82,6 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
             {
                 Interlocked.Exchange(ref _maxExecutionTime, executionTime);
             }
-        }
-
-        public void RecordException(Guid behaviorId, string exceptionText)
-        {
-            _exceptions.AddOrUpdate(behaviorId, text => new List<string>
-            {
-                exceptionText
-            }, (id, exceptions) =>
-            {
-                exceptions.Add(exceptionText);
-                return exceptions;
-            });
         }
     }
 }
