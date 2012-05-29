@@ -1,11 +1,9 @@
 ﻿<viewdata model="FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models.InstrumentationDetailsModel"/>
 <use master="TwoColumn" />
 
-<macro:Header type="string" dateTime="string" executionTime="string">
-
-</macro:Header>
-
-<content:title></content:title>
+<content:title>
+  Instrumentation: ${Model.Url}
+</content:title>
 <content:head>
 </content:head>
 <content:leftColumn>
