@@ -17,7 +17,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 
         public override int Rank()
         {
-            return 5;
+            return 45;
         }
     }
 }

@@ -17,7 +17,6 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes
             _columnBuilders = columnBuilders;
         }
 
-        //[FubuDiagnosticsUrl("~/instrumentation")]
         public InstrumentationCacheModel Execute(InstrumentationRequestModel inputModel)
         {
             var report =  _modelBuilder.Build();

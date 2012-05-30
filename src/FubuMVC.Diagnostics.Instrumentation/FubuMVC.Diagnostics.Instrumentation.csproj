@@ -66,11 +66,14 @@
     <Compile Include="Handlers\Routes\Models\InstrumentationInputModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRequestModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRequestOverviewModel.cs" />
+    <Compile Include="Handlers\Routes\Models\InstrumentationRouteDetailsModel.cs" />
+    <Compile Include="Handlers\Routes\Models\InstrumentationRouteDetailsRequestModel.cs" />
     <Compile Include="Handlers\Routes\Models\RouteInstrumentationModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationCacheModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationCacheModelBuilder.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRouteRequestModel.cs" />
     <Compile Include="Handlers\Routes\View\AverageChainVisualizerBuilder.cs" />
+    <Compile Include="Handlers\Routes\View\Details\GetHandler.cs" />
     <Compile Include="Handlers\Routes\View\get_Id_handler.cs" />
     <Compile Include="Handlers\Routes\View\IAverageChainVisualizerBuilder.cs" />
     <Compile Include="InstrumentationHandlerUrlPolicy.cs" />
@@ -82,6 +85,7 @@
   <ItemGroup>
     <Content Include="Content\Scripts\instrumentation.js" />
     <Content Include="Content\Styles\instrumentationdetails.css" />
+    <Content Include="Content\Scripts\instrumentationroutedetails.js" />
     <Content Include="Content\Styles\instrumentation.css" />
     <Content Include="packages.config" />
   </ItemGroup>

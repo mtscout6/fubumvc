@@ -6,6 +6,7 @@
 </content:title>
 <content:head>
   <Stylesheet href="instrumentationdetails.css" />
+  <Script src="instrumentationroutedetails.js" />
 </content:head>
 <content:leftColumn>
   <h5>Behavior Chain</h5>
@@ -41,7 +42,7 @@
     <h5>Overview</h5>
     <ul>
       <li>
-        <span>Average Execution Time(ms):</span> ${Model.AverageExecution.ToString("F2")}
+        <span>Average Execution Time:</span> ${Model.AverageExecution.ToString("F2")} ms
       </li>
       <li>
         <span>Exception Count:</span> ${Model.ExceptionCount}
@@ -50,10 +51,10 @@
         <span>Hit Count:</span> ${Model.HitCount}
       </li>
       <li>
-        <span>Maximum Execution Time:</span> ${Model.MaxExecution}
+        <span>Maximum Execution Time:</span> ${Model.MaxExecution} ms
       </li>
       <li>
-        <span>Minimum Execution Time:</span> ${Model.MinExecution}
+        <span>Minimum Execution Time:</span> ${Model.MinExecution} ms
       </li>
     </ul>
   </div>
@@ -65,8 +66,11 @@
       <span>${overview.DateTime}</span>
       <span class="seperator">&nbsp;</span>
       <strong>Execution Time:</strong>
-      <span>${overview.ExecutionTime}</span>
+      <span>${overview.ExecutionTime} ms</span>
     </p>
+  </div>
+  <div style="display:none; border: 1px solid black; height: 100px;">
+    I am details about this request!
   </div>
 </for>
 

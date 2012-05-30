@@ -8,10 +8,10 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View
 {
     public class get_Id_handler
     {
-        private readonly InstrumentationReportCache _reportCache;
         private readonly IAverageChainVisualizerBuilder _averageChainVisualizerBuilder;
+        private readonly IInstrumentationReportCache _reportCache;
 
-        public get_Id_handler(InstrumentationReportCache reportCache, IAverageChainVisualizerBuilder averageChainVisualizerBuilder)
+        public get_Id_handler(IInstrumentationReportCache reportCache, IAverageChainVisualizerBuilder averageChainVisualizerBuilder)
         {
             _reportCache = reportCache;
             _averageChainVisualizerBuilder = averageChainVisualizerBuilder;
@@ -39,6 +39,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View
                     x.Steps.Each(s => s.Details.AcceptVisitor(visitor));
                     return new InstrumentationRequestOverviewModel
                     {
+                        Id = x.Id,
                         DateTime = x.Time.ToString(),
                         ExecutionTime = x.ExecutionTime.ToString(),
                         HasException = visitor.HasExceptions()
