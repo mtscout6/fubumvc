@@ -11,6 +11,9 @@ h1 small {
   display: block;
   font-size: 12px;
 }
+h1 span {
+  color: #CCC;
+}
 
 .seperator {
   display: inline-block;
