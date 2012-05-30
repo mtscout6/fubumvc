@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FubuMVC.Diagnostics.Instrumentation.Diagnostics;
 using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
 
@@ -15,9 +16,14 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View.Details
 
         public InstrumentationRouteDetailsModel Execute(InstrumentationRouteDetailsRequestModel inputModel)
         {
-            //var report = _reportCache.GetReport(inputModel.Id);
-            //report.Reports.FirstOrDefault(r => r.Id == inputModel.ReportId);
-            return new InstrumentationRouteDetailsModel();
+            var model = new InstrumentationRouteDetailsModel();
+            var report = _reportCache.GetReport(inputModel.Id);
+            var debugReport = report.Reports.FirstOrDefault(r => r.Id == inputModel.ReportId);
+            if (debugReport != null)
+            {
+                debugReport.Each(x => model.Steps.Add(new BehaviorDetailModel(x)));
+            }
+            return model;
         }
     }
 }

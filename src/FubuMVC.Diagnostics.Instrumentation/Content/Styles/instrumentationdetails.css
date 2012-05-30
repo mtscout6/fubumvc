@@ -36,6 +36,22 @@ h1 span {
   width: 200px;
 }
 
+.exceptiondetails {
+  border: 1px solid #E4C652;
+  background: #EEDC94;
+  padding: 10px;
+  margin-right: 18px;
+}
+
+.subdetails {
+  display:none; 
+  border: 1px solid black;
+  margin-bottom: 7px;
+}
+
+.detailselement {
+  margin-left: 10px;
+}
 .chain-visualizer {
   list-style: none;
 }

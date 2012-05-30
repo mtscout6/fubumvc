@@ -4,19 +4,22 @@
 
   $('div.alert-message').click(function(event) {
     var element = $(event.currentTarget),
-      sibling = element.next('div');
-    if(sibling.is(':visible')) {
+        sibling = element.next('div'),
+        chainId = $('#chainId').val(),
+        reportId = element.find('input').val();
+
+    if(sibling.is(':visible') || $.data(sibling[0], 'loaded') === 'true') {
       sibling.slideToggle(250);
     }
     else {
       $.ajax({
         url: 'details',
         type: 'GET',
-        data: { Id: '', reportId: '' },
-        dataType: 'json',
-        contentType: 'application/json',
+        data: { Id: chainId, ReportId: reportId },
         success: function(data) {
           sibling.slideToggle(250);
+          $('#detailsTemplate').tmpl(data.Steps).appendTo(sibling);
+          $.data(sibling[0], 'loaded', 'true');
         }
       });
     }
