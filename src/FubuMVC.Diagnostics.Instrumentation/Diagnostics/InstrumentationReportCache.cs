@@ -19,7 +19,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         private readonly IEnumerable<ICacheFilter> _filters;
         private readonly BehaviorGraph _graph;
         private readonly DiagnosticsConfiguration _configuration;
-        private static readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports =
+        private readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports =
             new ConcurrentDictionary<Guid, RouteInstrumentationReport>();
 
         public InstrumentationReportCache(IEnumerable<ICacheFilter> filters, BehaviorGraph graph, DiagnosticsConfiguration configuration)

@@ -12,18 +12,15 @@ namespace FubuMVC.Tests.Diagnostics
     {
         private CurrentRequest theCurrentRequest;
         private DiagnosticsConfiguration _configuration;
-        private IDebugReportDistributer _distributer;
 
         protected override void beforeEach()
         {
             theCurrentRequest = new CurrentRequest();
 
             _configuration = new DiagnosticsConfiguration {MaxRequests = 60};
-//            _distributer = new DebugReportDistributer();
-
+            
             Container.Inject(theCurrentRequest);
             Container.Inject(_configuration);
-            Container.Inject(_distributer);
         }
 
         [Test]
@@ -40,7 +37,7 @@ namespace FubuMVC.Tests.Diagnostics
 
             for (int i = 0; i < _configuration.MaxRequests + 10; ++i)
             {
-                _distributer.Publish(new DebugReport(null, null), theCurrentRequest);
+                ClassUnderTest.AddReport(new DebugReport(null, null), theCurrentRequest);
             }
 
             ClassUnderTest
@@ -62,16 +59,16 @@ namespace FubuMVC.Tests.Diagnostics
 
             for (int i = 0; i < _configuration.MaxRequests; i++)
             {
-                _distributer.Publish(new DebugReport(null, null), theCurrentRequest);
+                ClassUnderTest.AddReport(new DebugReport(null, null), theCurrentRequest);
             }
 
             var report1 = new DebugReport(null, null);
             var report2 = new DebugReport(null, null);
             var report3 = new DebugReport(null, null);
 
-            _distributer.Publish(report1, theCurrentRequest);
-            _distributer.Publish(report2, theCurrentRequest);
-            _distributer.Publish(report3, theCurrentRequest);
+            ClassUnderTest.AddReport(report1, theCurrentRequest);
+            ClassUnderTest.AddReport(report2, theCurrentRequest);
+            ClassUnderTest.AddReport(report3, theCurrentRequest);
 
             ClassUnderTest
                 .RecentReports()
@@ -89,7 +86,7 @@ namespace FubuMVC.Tests.Diagnostics
             // Just to trigger the constructor
             var classUnderTest = ClassUnderTest;
 
-            _distributer.Publish(new DebugReport(null, null), theCurrentRequest);
+            ClassUnderTest.AddReport(new DebugReport(null, null), theCurrentRequest);
 
             ClassUnderTest
                 .RecentReports()

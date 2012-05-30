@@ -18,12 +18,12 @@ namespace FubuMVC.Diagnostics.Core.Grids.Columns.Routes
 		public override string ValueFor(BehaviorChain chain)
 		{
 		    var lastCall = chain.LastCall();
-            if(lastCall == null || lastCall.OutputType() == typeof(void) || lastCall.OutputType() == typeof(FubuContinuation))
+            if(lastCall == null || lastCall.OutputType() == null || lastCall.OutputType() == typeof(FubuContinuation))
             {
                 return NotApplicable;
             }
 
-            var outputs = chain.Outputs.Select(output => output.Description);
+            var outputs = chain.Outputs.Select(output => output.Description).ToList();
             if (!outputs.Any())
             {
                 return None;
