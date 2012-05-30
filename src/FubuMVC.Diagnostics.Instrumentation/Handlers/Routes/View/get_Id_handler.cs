@@ -9,10 +9,12 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View
     public class get_Id_handler
     {
         private readonly InstrumentationReportCache _reportCache;
+        private readonly IAverageChainVisualizerBuilder _averageChainVisualizerBuilder;
 
-        public get_Id_handler(InstrumentationReportCache reportCache)
+        public get_Id_handler(InstrumentationReportCache reportCache, IAverageChainVisualizerBuilder averageChainVisualizerBuilder)
         {
             _reportCache = reportCache;
+            _averageChainVisualizerBuilder = averageChainVisualizerBuilder;
         }
 
         public InstrumentationDetailsModel Execute(InstrumentationInputModel inputModel)
@@ -26,7 +28,8 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View
                 ExceptionCount = report.ExceptionCount,
                 HitCount = report.HitCount,
                 MaxExecution = report.MaxExecutionTime,
-                MinExecution = report.MinExecutionTime
+                MinExecution = report.MinExecutionTime,
+                AverageChain = _averageChainVisualizerBuilder.VisualizerFor(inputModel.Id)
             };
             model.RequestOverviews.AddRange(report.Reports
                 .OrderByDescending(x => x.Time)

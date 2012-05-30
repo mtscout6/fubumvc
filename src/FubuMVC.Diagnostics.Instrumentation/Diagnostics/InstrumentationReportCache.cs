@@ -11,6 +11,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 {
     public interface IInstrumentationReportCache : IEnumerable<RouteInstrumentationReport>, IDebugReportConsumer
     {
+        RouteInstrumentationReport GetReport(Guid behaviorId);
     }
 
     public class InstrumentationReportCache : IInstrumentationReportCache

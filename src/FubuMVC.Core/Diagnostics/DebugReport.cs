@@ -31,7 +31,7 @@ namespace FubuMVC.Core.Diagnostics
         }
     }
 
-    public class DebugReport : TimedReport, IEnumerable<BehaviorReport>, IDebugReport
+    public class DebugReport : TimedReport, IDebugReport
     {
         private readonly Stack<BehaviorReport> _behaviorStack = new Stack<BehaviorReport>();
         private readonly IList<BehaviorReport> _behaviors = new List<BehaviorReport>();

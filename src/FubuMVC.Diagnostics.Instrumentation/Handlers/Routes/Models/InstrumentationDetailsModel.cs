@@ -10,5 +10,6 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models
         }
 
         public IList<InstrumentationRequestOverviewModel> RequestOverviews { get; set; }
+        public AverageChainModel AverageChain { get; set; }
     }
 }

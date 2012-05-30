@@ -4,7 +4,7 @@ using FubuMVC.Core.Behaviors;
 
 namespace FubuMVC.Core.Diagnostics
 {
-    public interface IDebugReport
+    public interface IDebugReport : IEnumerable<BehaviorReport>
     {
 		Guid Id { get; }
         Guid BehaviorId { get; set; }

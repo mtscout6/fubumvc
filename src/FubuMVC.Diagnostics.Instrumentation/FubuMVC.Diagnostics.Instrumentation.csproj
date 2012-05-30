@@ -60,6 +60,8 @@
     <Compile Include="Handlers\Routes\Filter\PostHandler.cs" />
     <Compile Include="Handlers\Routes\Filter\RouteFilter.cs" />
     <Compile Include="Handlers\Routes\GetHandler.cs" />
+    <Compile Include="Handlers\Routes\Models\AverageBehaviorModel.cs" />
+    <Compile Include="Handlers\Routes\Models\AverageChainModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationDetailsModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationInputModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRequestModel.cs" />
@@ -68,7 +70,9 @@
     <Compile Include="Handlers\Routes\Models\InstrumentationCacheModel.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationCacheModelBuilder.cs" />
     <Compile Include="Handlers\Routes\Models\InstrumentationRouteRequestModel.cs" />
+    <Compile Include="Handlers\Routes\View\AverageChainVisualizerBuilder.cs" />
     <Compile Include="Handlers\Routes\View\get_Id_handler.cs" />
+    <Compile Include="Handlers\Routes\View\IAverageChainVisualizerBuilder.cs" />
     <Compile Include="InstrumentationHandlerUrlPolicy.cs" />
     <Compile Include="Navigation\InstrumentationExplorerAction.cs" />
     <Compile Include="InstrumentationDiagnosticsRegistry.cs" />

@@ -5,6 +5,7 @@ using FubuMVC.Diagnostics.Instrumentation.Diagnostics;
 using FubuMVC.Diagnostics.Instrumentation.Handlers;
 using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes;
 using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
+using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View;
 using FubuMVC.Spark;
 
 namespace FubuMVC.Diagnostics.Instrumentation
@@ -29,6 +30,7 @@ namespace FubuMVC.Diagnostics.Instrumentation
             {
                 x.SetServiceIfNone<IInstrumentationReportCache, InstrumentationReportCache>();
                 x.SetServiceIfNone<IGridRowProvider<InstrumentationCacheModel, RouteInstrumentationModel>, InstrumentationCacheRowProvider>();
+                x.SetServiceIfNone<IAverageChainVisualizerBuilder, AverageChainVisualizerBuilder>();
             });
 
             Import<SparkEngine>();

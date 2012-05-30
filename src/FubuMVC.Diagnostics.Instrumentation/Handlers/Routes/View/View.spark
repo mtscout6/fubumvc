@@ -9,6 +9,26 @@
 </content:head>
 <content:leftColumn>
   <h5>Behavior Chain</h5>
+  <if condition="Model.AverageChain != null">
+    <ul class="chain-visualizer">
+      <li each="var node in Model.AverageChain.BehaviorAverages">
+        <a href="#" id="Node-${node.Id}" class="chain-node btn large">${node.DisplayType} (${node.AverageExecutionTime.ToString("F")} ms)</a>
+      </li>
+    </ul>
+  </if>
+  <else>
+    <span class="label warning">Behavior not found.</span>
+  </else>
+  <div id="chain-arrow" style="display:none">
+    <Image src="down-arrow.png" />
+  </div>
+  <p>
+    <em>
+      <strong>Note:</strong> <br/>
+      This is a visual representation of the corresponding Behavior Chain and the average execution times per node -- the configuration model for your request.<br/><br/>
+      <a href="${this.Urls.UrlFor(new FubuMVC.Diagnostics.Features.Chains.ChainRequest { Id = Model.AverageChain.Chain.UniqueId } )}">Click here</a> to view the details of the configuration.
+    </em>
+  </p>
 </content:leftColumn>
 <content:rightColumn>
   <div class="page-header">
