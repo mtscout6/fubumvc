@@ -35,3 +35,15 @@ h1 span {
   display: inline-block;
   width: 200px;
 }
+
+.chain-visualizer {
+  list-style: none;
+}
+
+.chain-visualizer li {
+  text-align: center;
+}
+
+.chain-visualizer li a {
+  cursor: default;
+}
