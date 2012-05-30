@@ -1,14 +1,16 @@
-﻿(function($) {
-  
-    var exports = {},
+﻿(function ($) {
+  var exports = {},
         gridSelector,
         filterSelector = '#filter-dialog',
-        columnModel = $('#column-model').metadata({
+        columnModel = $('#column-model').length ? $('#column-model').metadata({
           type: 'elem', name: 'script'
-        }),
+        }) : undefined,
         filterColumns = function () {
-          var cols = [];
-          for (var i = 0; i < columnModel.length; i++) {
+          var cols = [],
+              i = 0;
+          if (!columnModel) return false;
+          
+          for (i; i < columnModel.length; i++) {
             var col = columnModel[i];
             if (col.hideFilter) {
               continue;
@@ -74,7 +76,7 @@
             }
           });
         },
-        getData = function(gridData) {
+        getData = function (gridData) {
           var params = {};
           params.page = gridData.page;
           params.rows = gridData.rows;
@@ -100,7 +102,7 @@
         },
         setupGrid = function (gridOptions) {
           var options = {
-            datatype: function(gridData) {
+            datatype: function (gridData) {
               getData(gridData);
             },
             url: exports.grid().metadata().url,
@@ -112,18 +114,18 @@
             height: '100%',
             mtype: 'POST',
             pager: '#pager',
-            onCellSelect: function(rowId) {
+            onCellSelect: function (rowId) {
               window.location = rowId;
             },
-            ondblClickRow: function(rowId) {
+            ondblClickRow: function (rowId) {
               window.location = rowId;
             },
             sortable: true
           };
 
-          if(!columnModel.length) {
-              $('#NoData').show();
-              return;
+          if (!columnModel.length) {
+            $('#NoData').show();
+            return;
           }
 
           exports.grid().jqGrid($.extend(options, gridOptions));
@@ -219,32 +221,32 @@
           availableFilters: ko.observableArray(filterColumns())
         };
 
-    exports.grid = function () {
-      return $(gridSelector);
-    };
+  exports.grid = function () {
+    return $(gridSelector);
+  };
 
-    exports.filterDialog = function () {
-      return $(filterSelector);
-    };
+  exports.filterDialog = function () {
+    return $(filterSelector);
+  };
 
-    exports.colNames = function () {
-      var cols = [];
-      for (var i = 0; i < columnModel.length; i++) {
-        var col = columnModel[i];
-        cols.push(col.name);
-      }
+  exports.colNames = function () {
+    var cols = [];
+    for (var i = 0; i < columnModel.length; i++) {
+      var col = columnModel[i];
+      cols.push(col.name);
+    }
 
-      return cols;
-    };
+    return cols;
+  };
 
-    exports.initGrid = function (gridElementSelector, gridOptions) {
-      gridSelector = gridElementSelector;
-      ko.applyBindings(viewModel);
-      setupFilters();
-      setupGrid(gridOptions);
-      setupAutocomplete();
-    };
+  exports.initGrid = function (gridElementSelector, gridOptions) {
+    gridSelector = gridElementSelector;
+    ko.applyBindings(viewModel);
+    setupFilters();
+    setupGrid(gridOptions);
+    setupAutocomplete();
+  };
 
-    $.gridwrapper = exports;
+  $.gridwrapper = exports;
 
 })(jQuery);

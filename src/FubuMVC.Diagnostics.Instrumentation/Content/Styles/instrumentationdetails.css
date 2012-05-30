@@ -1,0 +1,34 @@
+.alert-message {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+h1 {
+  word-wrap: break-word;
+}
+
+h1 small {
+  display: block;
+  font-size: 12px;
+}
+
+.seperator {
+  display: inline-block;
+  border-right: solid 1px #FFF;
+  margin:0 20px;
+  opacity: 0.4;
+}
+
+.overview ul {
+  margin-left: 15px;
+}
+
+.overview li {
+  line-height: 22px;
+}
+
+.overview span {
+  font-weight: bold;
+  display: inline-block;
+  width: 200px;
+}

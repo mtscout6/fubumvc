@@ -5,6 +5,7 @@
   Instrumentation: ${Model.Url}
 </content:title>
 <content:head>
+  <Stylesheet href="instrumentationdetails.css" />
 </content:head>
 <content:leftColumn>
   <h5>Behavior Chain</h5>
@@ -16,7 +17,7 @@
       <small>(Chain ${Model.Id})</small>
     </h1>
   </div>
-  <div class="well">
+  <div class="well overview">
     <h5>Overview</h5>
     <ul>
       <li>
@@ -42,6 +43,7 @@
     <p>
       <strong>Date Time:</strong>
       <span>${overview.DateTime}</span>
+      <span class="seperator">&nbsp;</span>
       <strong>Execution Time:</strong>
       <span>${overview.ExecutionTime}</span>
     </p>

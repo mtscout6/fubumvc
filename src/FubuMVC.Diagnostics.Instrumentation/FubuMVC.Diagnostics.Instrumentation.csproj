@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Scripts\instrumentation.js" />
+    <Content Include="Content\Styles\instrumentationdetails.css" />
     <Content Include="Content\Styles\instrumentation.css" />
     <Content Include="packages.config" />
   </ItemGroup>
@@ -84,8 +85,12 @@
     <None Include=".package-manifest" />
     <Content Include="instrumentation.spark.config" />
     <Content Include="instrumentation.script.config" />
-    <None Include="Handlers\Routes\RouteInstrumentation.spark" />
-    <None Include="Handlers\Routes\View\View.spark" />
+    <None Include="Handlers\Routes\RouteInstrumentation.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Handlers\Routes\View\View.spark">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />
