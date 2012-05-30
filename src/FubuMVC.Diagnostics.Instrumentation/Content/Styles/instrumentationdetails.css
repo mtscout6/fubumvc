@@ -44,9 +44,7 @@ h1 span {
 }
 
 .subdetails {
-  display:none; 
-  border: 1px solid black;
-  margin-bottom: 7px;
+  display:none;
 }
 
 .detailselement {

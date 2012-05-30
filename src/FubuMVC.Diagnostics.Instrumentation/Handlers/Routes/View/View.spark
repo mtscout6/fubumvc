@@ -71,13 +71,13 @@
       <span>${overview.ExecutionTime} ms</span>
     </p>
   </div>
-  <div class="subdetails">
+  <div class="subdetails well">
   </div>
 </for>
   <ignore>
     <script id="detailsTemplate" type="text/x-jquery-tmpl">
       <div class="detailselement">
-        Name: ${Name}
+        ${Name}
         <ul>
           <li>Description: ${Description}</li>
           <li>Execution Time: ${ExecutionTime} ms</li>

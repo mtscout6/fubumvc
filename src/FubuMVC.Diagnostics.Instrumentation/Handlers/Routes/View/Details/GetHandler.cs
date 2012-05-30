@@ -18,10 +18,11 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View.Details
         {
             var model = new InstrumentationRouteDetailsModel();
             var report = _reportCache.GetReport(inputModel.Id);
+
             var debugReport = report.Reports.FirstOrDefault(r => r.Id == inputModel.ReportId);
             if (debugReport != null)
             {
-                debugReport.Each(x => model.Steps.Add(new BehaviorDetailModel(x)));
+                debugReport.Each(x => model.Behaviors.Add(new BehaviorDetailModel(x)));
             }
             return model;
         }

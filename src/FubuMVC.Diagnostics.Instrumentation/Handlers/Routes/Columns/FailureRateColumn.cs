@@ -12,9 +12,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Columns
 
         public override string ValueFor(RouteInstrumentationModel target)
         {
-            return target.ExceptionCount != 0
-                ? ( (target.HitCount/target.ExceptionCount) * 100 ).ToString("F2") + "%"
-                : "0.00%";
+            return ((target.ExceptionCount * 1.0/target.HitCount) * 100).ToString("F2") + "%";
         }
 
         public override int Rank()
