@@ -44,43 +44,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\InstrumentationHandlers.cs" />
-    <Compile Include="Handlers\Routes\Autocomplete\PostHandler.cs" />
-    <Compile Include="Handlers\Routes\Columns\AverageExecutionColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\ExceptionCountColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\FailureRateColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\MaxExecutionColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\MinExecutionColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\RequestUrlColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\RouteColumn.cs" />
-    <Compile Include="Handlers\Routes\Columns\HitCountColumn.cs" />
+    <Compile Include="Features\InstrumentationHandlers.cs" />
+    <Compile Include="Features\Routes\Autocomplete\PostHandler.cs" />
+    <Compile Include="Features\Routes\Columns\AverageExecutionColumn.cs" />
+    <Compile Include="Features\Routes\Columns\ExceptionCountColumn.cs" />
+    <Compile Include="Features\Routes\Columns\FailureRateColumn.cs" />
+    <Compile Include="Features\Routes\Columns\MaxExecutionColumn.cs" />
+    <Compile Include="Features\Routes\Columns\MinExecutionColumn.cs" />
+    <Compile Include="Features\Routes\Columns\RequestUrlColumn.cs" />
+    <Compile Include="Features\Routes\Columns\RouteColumn.cs" />
+    <Compile Include="Features\Routes\Columns\HitCountColumn.cs" />
     <Compile Include="Diagnostics\InstrumentationReportCache.cs" />
     <Compile Include="Diagnostics\RouteInstrumentationReport.cs" />
-    <Compile Include="Handlers\Routes\Filter\Filters.cs" />
-    <Compile Include="Handlers\Routes\Filter\PostHandler.cs" />
-    <Compile Include="Handlers\Routes\Filter\RouteFilter.cs" />
-    <Compile Include="Handlers\Routes\GetHandler.cs" />
-    <Compile Include="Handlers\Routes\Models\AverageBehaviorModel.cs" />
-    <Compile Include="Handlers\Routes\Models\AverageChainModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationDetailsModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationInputModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationRequestModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationRequestOverviewModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationRouteDetailsModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationRouteDetailsRequestModel.cs" />
-    <Compile Include="Handlers\Routes\Models\RouteInstrumentationModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationCacheModel.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationCacheModelBuilder.cs" />
-    <Compile Include="Handlers\Routes\Models\InstrumentationRouteRequestModel.cs" />
-    <Compile Include="Handlers\Routes\View\AverageChainVisualizerBuilder.cs" />
-    <Compile Include="Handlers\Routes\View\Details\GetHandler.cs" />
-    <Compile Include="Handlers\Routes\View\get_Id_handler.cs" />
-    <Compile Include="Handlers\Routes\View\IAverageChainVisualizerBuilder.cs" />
+    <Compile Include="Features\Routes\Filter\Filters.cs" />
+    <Compile Include="Features\Routes\Filter\PostHandler.cs" />
+    <Compile Include="Features\Routes\Filter\RouteFilter.cs" />
+    <Compile Include="Features\Routes\GetHandler.cs" />
+    <Compile Include="Features\Routes\Models\AverageBehaviorModel.cs" />
+    <Compile Include="Features\Routes\Models\AverageChainModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationDetailsModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationInputModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationRequestModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationRequestOverviewModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationRouteDetailsModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationRouteDetailsRequestModel.cs" />
+    <Compile Include="Features\Routes\Models\RouteInstrumentationModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationCacheModel.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationCacheModelBuilder.cs" />
+    <Compile Include="Features\Routes\Models\InstrumentationRouteRequestModel.cs" />
+    <Compile Include="Features\Routes\View\AverageChainVisualizerBuilder.cs" />
+    <Compile Include="Features\Routes\View\Details\GetHandler.cs" />
+    <Compile Include="Features\Routes\View\get_Id_handler.cs" />
+    <Compile Include="Features\Routes\View\IAverageChainVisualizerBuilder.cs" />
     <Compile Include="InstrumentationHandlerUrlPolicy.cs" />
     <Compile Include="Navigation\InstrumentationExplorerAction.cs" />
     <Compile Include="InstrumentationDiagnosticsRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Handlers\Routes\InstrumentationCacheRowProvider.cs" />
+    <Compile Include="Features\Routes\InstrumentationCacheRowProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Scripts\instrumentation.js" />
@@ -93,15 +93,17 @@
     <None Include=".package-manifest" />
     <Content Include="instrumentation.spark.config" />
     <Content Include="instrumentation.script.config" />
-    <None Include="Handlers\Routes\RouteInstrumentation.spark">
+    <None Include="Features\Routes\RouteInstrumentation.spark">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Handlers\Routes\View\View.spark">
+    <None Include="Features\Routes\View\View.spark">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />
+    <Folder Include="Notifications\" />
+    <Folder Include="Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Core\FubuMVC.Core.csproj">

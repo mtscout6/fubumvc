@@ -1,7 +1,6 @@
 ﻿using FubuMVC.Core;
 using FubuMVC.Core.Registration;
-using FubuMVC.Diagnostics.Instrumentation.Handlers;
-using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
+using FubuMVC.Diagnostics.Instrumentation.Features.Routes.Models;
 using FubuMVC.Diagnostics.Navigation;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Navigation

@@ -2,10 +2,10 @@
 using FubuMVC.Diagnostics.Core.Configuration.Policies;
 using FubuMVC.Diagnostics.Core.Grids;
 using FubuMVC.Diagnostics.Instrumentation.Diagnostics;
-using FubuMVC.Diagnostics.Instrumentation.Handlers;
-using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes;
-using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
-using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View;
+using FubuMVC.Diagnostics.Instrumentation.Features;
+using FubuMVC.Diagnostics.Instrumentation.Features.Routes;
+using FubuMVC.Diagnostics.Instrumentation.Features.Routes.Models;
+using FubuMVC.Diagnostics.Instrumentation.Features.Routes.View;
 using FubuMVC.Spark;
 
 namespace FubuMVC.Diagnostics.Instrumentation

@@ -1,0 +1,96 @@
+﻿<viewdata model="FubuMVC.Diagnostics.Instrumentation.Features.Routes.Models.InstrumentationDetailsModel"/>
+<use master="TwoColumn" />
+
+<content:title>
+  Instrumentation: ${Model.Url}
+</content:title>
+<content:head>
+  <Stylesheet href="instrumentationdetails.css" />
+  <Script src="instrumentationroutedetails.js" />
+</content:head>
+<content:leftColumn>
+  <h5>Behavior Chain</h5>
+  <if condition="Model.AverageChain != null">
+    <ul class="chain-visualizer">
+      <li each="var node in Model.AverageChain.BehaviorAverages">
+        <a href="#" id="Node-${node.Id}" class="chain-node btn large">${node.DisplayType} (${node.AverageExecutionTime.ToString("F")} ms)</a>
+      </li>
+    </ul>
+  </if>
+  <else>
+    <span class="label warning">Behavior not found.</span>
+  </else>
+  <div id="chain-arrow" style="display:none">
+    <Image src="down-arrow.png" />
+  </div>
+  <p>
+    <em>
+      <strong>Note:</strong> <br/>
+      This is a visual representation of the corresponding Behavior Chain and the average execution times per node -- the configuration model for your request.<br/><br/>
+      <a href="${this.Urls.UrlFor(new FubuMVC.Diagnostics.Features.Chains.ChainRequest { Id = Model.AverageChain.Chain.UniqueId } )}">Click here</a> to view the details of the configuration.
+    </em>
+  </p>
+</content:leftColumn>
+<content:rightColumn>
+  <div class="page-header">
+    <h1 class="route">
+      <span>Route:</span> ${Model.Url}
+      <small>(Chain ${Model.Id})</small>
+    </h1>
+    <input id="chainId" type="hidden" value="${Model.Id}"/>
+  </div>
+  <div class="well overview">
+    <h5>Overview</h5>
+    <ul>
+      <li>
+        <span>Average Execution Time:</span> ${Model.AverageExecution.ToString("F2")} ms
+      </li>
+      <li>
+        <span>Exception Count:</span> ${Model.ExceptionCount}
+      </li>
+      <li>
+        <span>Hit Count:</span> ${Model.HitCount}
+      </li>
+      <li>
+        <span>Maximum Execution Time:</span> ${Model.MaxExecution} ms
+      </li>
+      <li>
+        <span>Minimum Execution Time:</span> ${Model.MinExecution} ms
+      </li>
+    </ul>
+  </div>
+
+<for each="var overview in Model.RequestOverviews">
+  <div class="alert-message ${overview.HasException ? "error" : overview.IsWarning ? "" : "info"}">
+    <input type="hidden" value="${overview.Id}"/>
+    <p>
+      <strong>Date Time:</strong>
+      <span>${overview.DateTime}</span>
+      <span class="seperator">&nbsp;</span>
+      <strong>Execution Time:</strong>
+      <span>${overview.ExecutionTime} ms</span>
+    </p>
+  </div>
+  <div class="subdetails well">
+  </div>
+</for>
+  <ignore>
+    <script id="detailsTemplate" type="text/x-jquery-tmpl">
+      <div class="detailselement">
+        ${Name}
+        <ul>
+          <li>Description: ${Description}</li>
+          <li>Execution Time: ${ExecutionTime} ms</li>
+          {{if Exception}}
+          <li>
+            Exception:
+            <div class="exceptiondetails">
+              {{html Exception}}
+            </div>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+    </script>
+  </ignore>
+</content:rightColumn>
