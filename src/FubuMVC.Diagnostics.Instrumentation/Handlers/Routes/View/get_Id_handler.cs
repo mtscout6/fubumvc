@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using FubuMVC.Core.Diagnostics;
 using FubuMVC.Diagnostics.Features.Requests;
 using FubuMVC.Diagnostics.Instrumentation.Diagnostics;
 using FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.Models;
@@ -42,11 +43,21 @@ namespace FubuMVC.Diagnostics.Instrumentation.Handlers.Routes.View
                         Id = x.Id,
                         DateTime = x.Time.ToString(),
                         ExecutionTime = x.ExecutionTime.ToString(),
-                        HasException = visitor.HasExceptions()
+                        HasException = visitor.HasExceptions(),
+                        IsWarning = IsWarning(model, x)
                     };
                 }));
 
             return model;
+        }
+
+        private bool IsWarning(InstrumentationDetailsModel model, IDebugReport report)
+        {
+            var max = model.MaxExecution;
+            var avg = model.AverageExecution;
+            var p1 = 1 - (double)report.ExecutionTime / max;
+            var p2 = 1- (double)avg / max;
+            return (p2 - p1) > 0.25;
         }
     }
 }

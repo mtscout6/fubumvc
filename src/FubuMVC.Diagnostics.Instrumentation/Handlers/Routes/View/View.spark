@@ -61,7 +61,7 @@
   </div>
 
 <for each="var overview in Model.RequestOverviews">
-  <div class="alert-message ${overview.HasException ? "error" : "info"}">
+  <div class="alert-message ${overview.HasException ? "error" : overview.IsWarning ? "" : "info"}">
     <input type="hidden" value="${overview.Id}"/>
     <p>
       <strong>Date Time:</strong>
