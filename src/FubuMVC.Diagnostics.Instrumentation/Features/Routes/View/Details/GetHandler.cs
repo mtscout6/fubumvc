@@ -22,7 +22,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Features.Routes.View.Details
             var debugReport = report.Reports.FirstOrDefault(r => r.Id == inputModel.ReportId);
             if (debugReport != null)
             {
-                debugReport.Each(x => model.Behaviors.Add(new BehaviorDetailModel(x)));
+                model.Behaviors = debugReport.Select(x => new BehaviorDetailModel(x)).ToList();
             }
             return model;
         }

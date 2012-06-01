@@ -93,6 +93,11 @@
         </ul>
       </div>
     </script>
+    <script id="noDetailsTemplate" type="text/x-jquery-tmpl">
+      <div class="detailselement">
+        Details have been removed from the cache
+      </div>
+    </script>
   </ignore>
   </if>
   <else>

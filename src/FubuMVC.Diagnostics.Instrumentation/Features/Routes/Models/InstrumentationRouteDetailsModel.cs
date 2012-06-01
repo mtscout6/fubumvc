@@ -7,10 +7,6 @@ namespace FubuMVC.Diagnostics.Instrumentation.Features.Routes.Models
 {
     public class InstrumentationRouteDetailsModel
     {
-        public InstrumentationRouteDetailsModel()
-        {
-            Behaviors = new List<BehaviorDetailModel>();
-        }
         public IList<BehaviorDetailModel> Behaviors { get; set; }
     }
 

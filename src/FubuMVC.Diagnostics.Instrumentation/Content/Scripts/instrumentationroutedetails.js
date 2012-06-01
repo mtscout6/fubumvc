@@ -18,7 +18,11 @@
         data: { Id: chainId, ReportId: reportId },
         success: function(data) {
           sibling.slideToggle(250);
-          $('#detailsTemplate').tmpl(data.Behaviors).appendTo(sibling);
+          if (data.Behaviors) {
+            $('#detailsTemplate').tmpl(data.Behaviors).appendTo(sibling);
+          } else {
+            $('#noDetailsTemplate').tmpl(data).appendTo(sibling);
+          }
           $.data(sibling[0], 'loaded', 'true');
         }
       });
