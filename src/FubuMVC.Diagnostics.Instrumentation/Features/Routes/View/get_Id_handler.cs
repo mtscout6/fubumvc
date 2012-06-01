@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using FubuMVC.Core.Diagnostics;
 using FubuMVC.Diagnostics.Features.Requests;
@@ -21,6 +22,10 @@ namespace FubuMVC.Diagnostics.Instrumentation.Features.Routes.View
         public InstrumentationDetailsModel Execute(InstrumentationInputModel inputModel)
         {
             var report = _reportCache.GetReport(inputModel.Id);
+
+            if (report == null)
+                return new InstrumentationDetailsModel{Id = Guid.Empty};
+
             var model = new InstrumentationDetailsModel
             {
                 Id = report.BehaviorId,

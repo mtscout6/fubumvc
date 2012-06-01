@@ -1,5 +1,6 @@
 ﻿<viewdata model="FubuMVC.Diagnostics.Instrumentation.Features.Routes.Models.InstrumentationDetailsModel"/>
 <use master="TwoColumn" />
+<use namespace="System" />
 
 <content:title>
   Instrumentation: ${Model.Url}
@@ -32,6 +33,7 @@
   </p>
 </content:leftColumn>
 <content:rightColumn>
+  <if condition="Model.Id != Guid.Empty">
   <div class="page-header">
     <h1 class="route">
       <span>Route:</span> ${Model.Url}
@@ -59,21 +61,20 @@
       </li>
     </ul>
   </div>
-
-<for each="var overview in Model.RequestOverviews">
-  <div class="alert-message ${overview.HasException ? "error" : overview.IsWarning ? "" : "info"}">
-    <input type="hidden" value="${overview.Id}"/>
-    <p>
-      <strong>Date Time:</strong>
-      <span>${overview.DateTime}</span>
-      <span class="seperator">&nbsp;</span>
-      <strong>Execution Time:</strong>
-      <span>${overview.ExecutionTime} ms</span>
-    </p>
-  </div>
-  <div class="subdetails well">
-  </div>
-</for>
+  <for each="var overview in Model.RequestOverviews">
+    <div class="alert-message ${overview.HasException ? "error" : overview.IsWarning ? "" : "info"}">
+      <input type="hidden" value="${overview.Id}"/>
+      <p>
+        <strong>Date Time:</strong>
+        <span>${overview.DateTime}</span>
+        <span class="seperator">&nbsp;</span>
+        <strong>Execution Time:</strong>
+        <span>${overview.ExecutionTime} ms</span>
+      </p>
+    </div>
+    <div class="subdetails well">
+    </div>
+  </for>
   <ignore>
     <script id="detailsTemplate" type="text/x-jquery-tmpl">
       <div class="detailselement">
@@ -93,4 +94,11 @@
       </div>
     </script>
   </ignore>
+  </if>
+  <else>
+    <div class="page-header">
+      <h1>Unable to find request instrumentation</h1>
+    </div>
+    <div>The request instrumentation that you are trying to access does not exist.</div>
+  </else>
 </content:rightColumn>

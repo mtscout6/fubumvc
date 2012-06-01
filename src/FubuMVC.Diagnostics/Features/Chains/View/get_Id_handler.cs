@@ -17,7 +17,7 @@ namespace FubuMVC.Diagnostics.Features.Chains.View
 	        var visualizer = _visualizer.VisualizerFor(request.Id);
 			if(visualizer == null)
 			{
-                throw new ArgumentException("{0} does not exist".ToFormat(request.Id));
+                return new ChainModel();
 			}
 
 	        return visualizer;

@@ -30,60 +30,68 @@
   </p>
 </content:leftColumn>
 <content:rightColumn>
-  <div class="page-header">
-    <h1>
-      ${Model.Report.Url} <span class="label">(${Model.Report.HttpMethod})</span>
-    </h1>
-  </div>
-  <div class="row page-header">
-    <div class="span12">
-      <ul class="pills" data-pills="pills">
-        <li class="active">
-          <a href="#request-headers">HTTP Headers</a>
-        </li>
-        <li>
-          <a href="#form-data">Form Data</a>
-        </li>
-        <li>
-          <a href="#log-viewer">Console</a>
-        </li>
-      </ul>
-      <div class="pill-content">
-        <div id="request-headers" class="active">
-          <pre class="prettyprint">${Model.Report.Headers.AsJson()}</pre>
-        </div>
-        <div id="form-data">
-          <pre class="prettyprint">${Model.Report.FormData.AsJson()}</pre>
-        </div>
-        <div id="log-viewer" class="log-viewer">
-          <if condition="Model.Logs.Any()">
-            <ul class="children">
-              <li class="behavior-details" each="var log in Model.Logs">
-                <BehaviorDetails details="log"/>
-              </li>
-            </ul>  
-          </if>
-          <else>
-            <pre class="prettyprint">&gt;&nbsp;</pre>
-          </else>
+  <if condition="Model.Report != null">
+    <div class="page-header">
+      <h1>
+        ${Model.Report.Url} <span class="label">(${Model.Report.HttpMethod})</span>
+      </h1>
+    </div>
+    <div class="row page-header">
+      <div class="span12">
+        <ul class="pills" data-pills="pills">
+          <li class="active">
+            <a href="#request-headers">HTTP Headers</a>
+          </li>
+          <li>
+            <a href="#form-data">Form Data</a>
+          </li>
+          <li>
+            <a href="#log-viewer">Console</a>
+          </li>
+        </ul>
+        <div class="pill-content">
+          <div id="request-headers" class="active">
+            <pre class="prettyprint">${Model.Report.Headers.AsJson()}</pre>
+          </div>
+          <div id="form-data">
+            <pre class="prettyprint">${Model.Report.FormData.AsJson()}</pre>
+          </div>
+          <div id="log-viewer" class="log-viewer">
+            <if condition="Model.Logs.Any()">
+              <ul class="children">
+                <li class="behavior-details" each="var log in Model.Logs">
+                  <BehaviorDetails details="log"/>
+                </li>
+              </ul>  
+            </if>
+            <else>
+              <pre class="prettyprint">&gt;&nbsp;</pre>
+            </else>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row fluid behaviors">
-    <a name="behavior-visualizer"></a>
-    <div class="alert-message error fade in" data-alert="alert" if="Model.HasErrors()">
-      <a class="close" href="#">x</a>
-      <p>
-        <a href="javascript:void(0);" class="exception-trigger">
-          <strong>Whoops!</strong> An exception occurred during the request.
-        </a>
-      </p>
+    <div class="row fluid behaviors">
+      <a name="behavior-visualizer"></a>
+      <div class="alert-message error fade in" data-alert="alert" if="Model.HasErrors()">
+        <a class="close" href="#">x</a>
+        <p>
+          <a href="javascript:void(0);" class="exception-trigger">
+            <strong>Whoops!</strong> An exception occurred during the request.
+          </a>
+        </p>
+      </div>
+      <ul id="RequestBreadcrumb" class="breadcrumb">
+      </ul>
+      ${this.PartialFor(Model.Root)}
     </div>
-    <ul id="RequestBreadcrumb" class="breadcrumb">
-    </ul>
-    ${this.PartialFor(Model.Root)}
-  </div>
+  </if>
+  <else>
+    <div class="page-header">
+      <h1>Unable to find request</h1>
+    </div>
+    <div>The request that you are trying to access does not exist.</div>
+  </else>
   <script id="breadcrumbTemplate" type="text/html">
     <li>
       {{if isActive()}}

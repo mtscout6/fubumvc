@@ -24,7 +24,7 @@ namespace FubuMVC.Diagnostics.Features.Requests.View
 			var report = _requestCache.RecentReports().SingleOrDefault(r => r.Id == request.Id);
 			if(report == null)
 			{
-			    throw new ArgumentException("{0} does not exist".ToFormat(request.Id));
+                return new RequestDetailsModel();
 			}
 
 		    var model = new RequestDetailsModel
