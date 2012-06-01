@@ -1,4 +1,3 @@
-using System;
 using FubuMVC.Core;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Diagnostics;
@@ -31,7 +30,7 @@ namespace FubuMVC.Tests.Diagnostics.Tracing
             ClassUnderTest.Invoke();
 
             var debugReport = MockFor<IDebugReport>();
-            MockFor<IDebugReportDistributer>().AssertWasCalled(x => x.Publish(debugReport, theCurrentRequest));
+            MockFor<IDebugReportPublisher>().AssertWasCalled(x => x.Publish(debugReport, theCurrentRequest));
         }
 
         [Test]
@@ -40,7 +39,7 @@ namespace FubuMVC.Tests.Diagnostics.Tracing
             ClassUnderTest.InvokePartial();
 
             var debugReport = MockFor<IDebugReport>();
-            MockFor<IDebugReportDistributer>().AssertWasNotCalled(x => x.Publish(debugReport, theCurrentRequest));
+            MockFor<IDebugReportPublisher>().AssertWasNotCalled(x => x.Publish(debugReport, theCurrentRequest));
         }
 
         [Test]

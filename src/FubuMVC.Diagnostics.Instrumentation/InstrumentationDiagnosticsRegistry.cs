@@ -1,4 +1,5 @@
 ﻿using FubuMVC.Core;
+using FubuMVC.Core.Diagnostics;
 using FubuMVC.Diagnostics.Core.Configuration.Policies;
 using FubuMVC.Diagnostics.Core.Grids;
 using FubuMVC.Diagnostics.Instrumentation.Diagnostics;

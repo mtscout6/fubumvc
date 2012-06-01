@@ -15,9 +15,7 @@ namespace FubuMVC.Diagnostics.Core.Grids.Columns.Requests
 
 		public override string ValueFor(RecordedRequestModel target)
 		{
-			var url = _urls.UrlFor(new RecordedRequestRequestModel {Id = target.Id});
-
-		    return url;
+			return _urls.UrlFor(new RecordedRequestRequestModel {Id = target.Id});
 		}
 
 		public override bool IsIdentifier()

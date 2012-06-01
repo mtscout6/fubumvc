@@ -41,7 +41,7 @@ namespace FubuMVC.Core.Diagnostics
                 x.ReplaceService<IOutputWriter, RecordingOutputWriter>();
                 x.ReplaceService<IBindingHistory, BindingHistory>();
                 x.SetServiceIfNone<IRequestHistoryCache, RequestHistoryCache>();
-                x.SetServiceIfNone<IDebugReportDistributer, DebugReportDistributer>();
+                x.SetServiceIfNone<IDebugReportPublisher, DebugReportPublisher>();
                 
                 // TODO -- need to test this
                 x.ReplaceService<IFieldAccessRightsExecutor, RecordingFieldAccessRightsExecutor>();

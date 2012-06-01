@@ -28,16 +28,11 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         public string Route { get; private set; }
         public Guid BehaviorId { get; private set; }
 
-        public RouteInstrumentationReport(DiagnosticsConfiguration configuration, Guid behaviorId)
+        public RouteInstrumentationReport(DiagnosticsConfiguration configuration, Guid behaviorId, string route = null)
         {
             _configuration = configuration;
             _reportCache = new ConcurrentQueue<IDebugReport>();
             BehaviorId = behaviorId;
-        }
-
-        public RouteInstrumentationReport(string route, DiagnosticsConfiguration configuration, Guid behaviorId)
-            : this(configuration, behaviorId)
-        {
             Route = route;
         }
 

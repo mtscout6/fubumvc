@@ -9,7 +9,7 @@ using FubuMVC.Core.Registration;
 
 namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
 {
-    public interface IInstrumentationReportCache : IEnumerable<RouteInstrumentationReport>, IDebugReportConsumer
+    public interface IInstrumentationReportCache : IEnumerable<RouteInstrumentationReport>
     {
         RouteInstrumentationReport GetReport(Guid behaviorId);
     }
@@ -22,14 +22,15 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
         private readonly ConcurrentDictionary<Guid, RouteInstrumentationReport> _instrumentationReports =
             new ConcurrentDictionary<Guid, RouteInstrumentationReport>();
 
-        public InstrumentationReportCache(IEnumerable<ICacheFilter> filters, BehaviorGraph graph, DiagnosticsConfiguration configuration)
+        public InstrumentationReportCache(IEnumerable<ICacheFilter> filters, BehaviorGraph graph, DiagnosticsConfiguration configuration, IDebugReportPublisher publisher)
         {
             _filters = filters;
             _graph = graph;
             _configuration = configuration;
+            publisher.Register(AddReport);
         }
 
-        public void AddReport(IDebugReport debugReport, CurrentRequest request)
+        private void AddReport(IDebugReport debugReport, CurrentRequest request)
         {
             if (_filters.Any(f => f.Exclude(request)))
             {
@@ -43,7 +44,7 @@ namespace FubuMVC.Diagnostics.Instrumentation.Diagnostics
                     var chain = _graph.Behaviors.SingleOrDefault(c => c.UniqueId == debugReport.BehaviorId);
                     if (chain != null && chain.Route != null)
                     {
-                        report = new RouteInstrumentationReport(chain.Route.Pattern, _configuration, debugReport.BehaviorId);
+                        report = new RouteInstrumentationReport(_configuration, debugReport.BehaviorId, chain.Route.Pattern);
                     }
                     else
                     {
