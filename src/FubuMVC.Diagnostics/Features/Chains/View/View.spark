@@ -34,6 +34,6 @@
     <div class="page-header">
       <h1>Unable to find route</h1>
     </div>
-    <div>The route that you are trying to access does not exist.</div>
+    <div>The route that you are trying to access does not exist. Return to the <a href="${this.Urls.UrlFor(new FubuMVC.Diagnostics.Features.Routes.DefaultRouteRequestModel())}">routes</a> page to see a list of existing routes.</div>
   </else>
 </content:pageContent>

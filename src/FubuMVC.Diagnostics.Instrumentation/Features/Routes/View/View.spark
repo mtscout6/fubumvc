@@ -61,6 +61,15 @@
       </li>
     </ul>
   </div>
+  <if condition="Model.RequestOverviews.Count == 0">
+    <h4>No Requests</h4>
+  </if>
+  <else if="Model.RequestOverviews.Count == 1">
+    <h4>Last Request:</h4>
+  </else>
+  <else>
+    <h4>Last ${Model.RequestOverviews.Count} Requests:</h4>
+  </else>
   <for each="var overview in Model.RequestOverviews">
     <div class="alert-message ${overview.HasException ? "error" : overview.IsWarning ? "" : "info"}">
       <input type="hidden" value="${overview.Id}"/>
@@ -104,6 +113,8 @@
     <div class="page-header">
       <h1>Unable to find request instrumentation</h1>
     </div>
-    <div>The request instrumentation that you are trying to access does not exist.</div>
+    <div>
+      The request instrumentation that you are trying to access does not exist. Return to the <a href="${this.Urls.UrlFor(new FubuMVC.Diagnostics.Instrumentation.Features.Routes.Models.InstrumentationRequestModel())}">instrumentation</a> page to see a list of the current list of instrumentation statistics.
+    </div>
   </else>
 </content:rightColumn>
